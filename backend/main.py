@@ -29,37 +29,36 @@ def generate_level_id(level_data):
 
 
 def generate_level(board_size, level_number):
-
+    """
+    Generate a game level with random numbers and calculate row/column sums.
+    
+    Args:
+        board_size (tuple): A tuple of (rows, cols) defining the board dimensions
+        level_number (int): The level number to assign to this level
+        
+    Returns:
+        tuple: (level_data, level_id) where:
+            - level_data is a dictionary containing the board, row sums, column sums, and level number
+            - level_id is a unique string identifier for this level
+    """
+ 
     rows, cols = board_size
     board = [[random.randint(BOARD_MIN_INT, BOARD_MAX_INT)
               for _ in range(cols)] for _ in range(rows)]
     board_mask = [[random.randint(0, 1) for _ in range(cols)]
                   for _ in range(rows)]
-
+ 
     row_sum = [0] * rows
     col_sum = [0] * cols
-
+ 
     for row in range(rows):
         for col in range(cols):
             row_sum[row] += board[row][col] * board_mask[row][col]
-
+ 
     for col in range(cols):
         for row in range(rows):
             col_sum[col] += board[row][col] * board_mask[row][col]
-
-    # # Test print
-    # for row in range(rows):
-    #     for col in range(cols):
-    #         if board_mask[row][col] == 1:
-    #             print(Fore.GREEN + f"{board[row][col]}", end=" ")
-    #         else:
-    #             print(Fore.RED + f"{board[row][col]}", end=" ")
-    #     print(Fore.YELLOW + f"{row_sum[row]}")
-
-    # for col in range(cols):
-    #     print(Fore.YELLOW + f"{col_sum[col]}", end=" ")
-    # print(Fore.RESET)
-
+ 
     level_data = {
         "size": board_size,
         "board": board,
@@ -69,7 +68,6 @@ def generate_level(board_size, level_number):
     }
     level_id = generate_level_id(level_data)
     return level_data, level_id
-
 
 def generate_game_set(board_size, level_count, output_path):
     game_id_set = set()
