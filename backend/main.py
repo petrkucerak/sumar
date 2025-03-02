@@ -17,14 +17,14 @@ BOARD_MAX_INT = 9
 
 def generate_level_id(level_data):
     ret = ""
-    rows, cols = level_data["size"]
+    rows, cols = level_data['size']
     for row in range(rows):
         for col in range(cols):
-            ret += f"{level_data["board"][row][col]}"
+            ret += f"{level_data['board'][row][col]}"
     for row in range(rows):
-        ret += f"-{level_data["row"][row]}"
+        ret += f"-{level_data['row'][row]}"
     for col in range(cols):
-        ret += f"-{level_data["col"][col]}"
+        ret += f"-{level_data['col'][col]}"
     return ret
 
 
