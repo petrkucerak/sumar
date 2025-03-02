@@ -90,6 +90,8 @@ def generate_game_set(board_size, level_count, output_path):
         json.dump(data, f)
 
 
-generate_game_set((5, 5), 100, "5x5_levels.json")
-generate_game_set((7, 7), 100, "7x7_levels.json")
-generate_game_set((9, 9), 100, "9x9_levels.json")
+if __name__ == "__main__":
+    generate_game_set((5, 5), 100, "5x5_levels.json")
+    generate_game_set((7, 7), 100, "7x7_levels.json")
+    generate_game_set((9, 9), 100, "9x9_levels.json")
+    print("Game levels generated successfully!")
