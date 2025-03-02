@@ -1,10 +1,14 @@
+"""Module for generating game levels.
+
+This script contains functions such as generate_level_id, generate_level, and generate_game_set.
+It is responsible for assembling and outputting different game board configurations.
+"""
+
 import random
-from colorama import Fore
 import json
 
 BOARD_MIN_INT = 0
 BOARD_MAX_INT = 9
-
 
 # Create a matrix
 
