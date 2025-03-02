@@ -1,0 +1,24 @@
+html,
+body {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+
+  background: #faf8ef;
+  color: #776e65;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header,
+main,
+footer {
+  width: 90vw;
+  max-width: 1000px;
+}
