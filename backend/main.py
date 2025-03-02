@@ -70,9 +70,20 @@ def generate_level(board_size, level_number):
     return level_data, level_id
 
 def generate_game_set(board_size, level_count, output_path):
+    """
+    Generate a set of unique game levels and save them to a JSON file.
+    
+    Args:
+        board_size (tuple): A tuple of (rows, cols) defining the board dimensions
+        level_count (int): The number of levels to generate
+        output_path (str): Path where the JSON file will be saved
+        
+    Returns:
+        None
+    """
     game_id_set = set()
     data = []
-
+ 
     for level_number in range(level_count):
         # Generate unique level
         level_complete = False
@@ -84,9 +95,12 @@ def generate_game_set(board_size, level_count, output_path):
                 game_id_set.add(level_id)
                 data.append(level_data)
                 level_complete = True
-    with open(output_path, "w+", encoding="utf-8") as f:
-        json.dump(data, f)
-
+    try:
+        with open(output_path, "w+", encoding="utf-8") as f:
+            json.dump(data, f)
+        print(f"Successfully generated {level_count} levels at {output_path}")
+    except IOError as e:
+        print(f"Error writing to {output_path}: {e}")
 
 if __name__ == "__main__":
     generate_game_set((5, 5), 100, "5x5_levels.json")
