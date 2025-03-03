@@ -13,9 +13,9 @@ async function renderScoreboard() {
     score[i].id = i + 1;
   }
 
-  score[0].class = "first";
-  score[1].class = "top";
-  score[2].class = "top";
+  if (score.length > 1) score[0].class = "first";
+  if (score.length > 2) score[1].class = "top";
+  if (score.length > 3) score[2].class = "top";
 
   // console.log(score);
 
