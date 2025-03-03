@@ -7,9 +7,6 @@ It is responsible for assembling and outputting different game board configurati
 import random
 import json
 
-BOARD_MIN_INT = 1
-BOARD_MAX_INT = 9
-
 # Create a matrix
 
 
@@ -32,7 +29,7 @@ def generate_level_id(level_data):
     return ret
 
 
-def generate_level(board_size, level_number):
+def generate_level(board_size, level_number, board_min_int, board_max_int):
     """
     Generate a game level with random numbers and calculate row/column sums.
 
@@ -47,7 +44,7 @@ def generate_level(board_size, level_number):
     """
 
     rows, cols = board_size
-    board = [[random.randint(BOARD_MIN_INT, BOARD_MAX_INT)
+    board = [[random.randint(board_min_int, board_max_int)
               for _ in range(cols)] for _ in range(rows)]
     board_mask = [[random.randint(0, 1) for _ in range(cols)]
                   for _ in range(rows)]
@@ -74,13 +71,14 @@ def generate_level(board_size, level_number):
     return level_data, level_id
 
 
-def generate_game_set(board_size, level_count, start_level, output_path):
+def generate_game_set(board_size, level_count, start_level, output_path, board_min_int=1, board_max_int=9):
     """
     Generate a set of unique game levels and save them to a JSON file.
 
     Args:
         board_size (tuple): A tuple of (rows, cols) defining the board dimensions
         level_count (int): The number of levels to generate
+        start_level (int): 
         output_path (str): Path where the JSON file will be saved
 
     Returns:
@@ -94,7 +92,7 @@ def generate_game_set(board_size, level_count, start_level, output_path):
         level_complete = False
         while not level_complete:
             level_data, level_id = generate_level(
-                board_size, start_level + level_number)
+                board_size, start_level + level_number, board_min_int, board_max_int)
             # If level unique, save id in the set and write level to the
             # output file
             if level_id not in game_id_set:
@@ -110,7 +108,14 @@ def generate_game_set(board_size, level_count, start_level, output_path):
 
 
 if __name__ == "__main__":
-    generate_game_set((5, 5), 100, 1, "5x5_levels.json")
-    generate_game_set((7, 7), 100, 101, "7x7_levels.json")
-    generate_game_set((9, 9), 100, 201, "9x9_levels.json")
+    generate_game_set((5, 5), 10, 1,    "5x5_1-5_levels.json", 1, 5)
+    generate_game_set((5, 5), 10, 11,   "5x5_1-7_levels.json", 1, 7)
+    generate_game_set((5, 5), 29, 21,   "5x5_1-9_levels.json", 1, 9)
+    generate_game_set((5, 5), 50, 50,   "5x5_-1-9_levels.json", -1, 9)
+    generate_game_set((5, 5), 100, 100, "5x5_-1-12_levels.json", -1, 12)
+    generate_game_set((5, 5), 300, 200, "5x5_-1-19_levels.json", -1, 19)
+    generate_game_set((5, 5), 250, 500, "5x5_-9-19_levels.json", -9, 19)
+    generate_game_set((5, 5), 25, 750,  "5x5_-19-19_levels.json", -19, 19)
+    # generate_game_set((7, 7), 100, 201, "7x7_levels.json")
+    # generate_game_set((9, 9), 100, 301, "9x9_levels.json")
     print("Game levels generated successfully!")
