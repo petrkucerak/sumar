@@ -216,4 +216,14 @@ a {
   justify-content: flex-start;
   align-items: flex-start;
 }
+
+.cell-use {
+  background-color: #475841;
+  color: #faf8ef;
+}
+.cell-not {
+  background-color: #ef233c;
+  color: #faf8ef;
+}
+
 /* end game board */

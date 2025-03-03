@@ -11,6 +11,24 @@ const CellStatus = {
   NOT: 2,
 };
 
+function updateCellClass(cell, status) {
+  // Remove only the cell status classes, keep other classes
+  cell.classList.remove("cell-use", "cell-not", "cell-unknown");
+
+  // Add the corresponding class
+  switch (status) {
+    case CellStatus.USE:
+      cell.classList.add("cell-use");
+      break;
+    case CellStatus.NOT:
+      cell.classList.add("cell-not");
+      break;
+    default:
+      // cell.classList.add("cell-unknown");
+      break;
+  }
+}
+
 function pad(num, size) {
   num = num.toString();
   while (num.length < size) num = "0" + num;
@@ -164,11 +182,15 @@ function renderLevel() {
       gameCellEl.className = "game-cell";
       gameCellEl.textContent = level.board[row][col];
       gameCellEl.status = CellStatus.UNKNOWN;
+      updateCellClass(gameCellEl, gameBoard.mask[row][col]);
       gameCellEl.addEventListener("click", () => {
-        gameCellEl.status === 2
-          ? (gameCellEl.status = 0)
-          : (gameCellEl.status += 1);
+        // On click function
+        // Change cell status
+        gameCellEl.status = (gameCellEl.status + 1) % 3;
+        // Save status to the memory
         setCellStatus(row, col, gameCellEl.status);
+        // Update the class based on the status
+        updateCellClass(gameCellEl, gameCellEl.status);
       });
       gameRowEl.appendChild(gameCellEl);
     }
