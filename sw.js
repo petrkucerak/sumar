@@ -1,6 +1,6 @@
 // This code executes in its own worker or thread
 const urlsToCache = [
-  // TODO: specific all files
+  // HTML, CSS, JS files
   "index.html",
   "/favicon/favicon.ico",
   "/style.css",
@@ -8,6 +8,17 @@ const urlsToCache = [
   "/hall.js",
   "/game.js",
   "/sin-slavy.html",
+  // Game data files
+  "/data/5x5_1-5_levels.json",
+  "/data/5x5_1-7_levels.json",
+  "/data/5x5_1-9_levels.json",
+  "/data/5x5_-1-9_levels.json",
+  "/data/5x5_-1-12_levels.json",
+  "/data/5x5_-1-19_levels.json",
+  "/data/5x5_-9-19_levels.json",
+  "/data/5x5_-19-19_levels.json",
+  // Web manifest
+  "/favicon/site.webmanifest",
   // fonts
   "/fonts/Roboto-Black.woff",
   "/fonts/Roboto-Black.woff2",
@@ -48,10 +59,12 @@ const urlsToCache = [
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(async () => {
-    const cache = await caches.open("pwa-assets");
-    return cache.addAll(urlsToCache);
-  });
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open("pwa-assets");
+      return cache.addAll(urlsToCache);
+    })()
+  );
 });
 
 self.addEventListener("activate", (event) => {
