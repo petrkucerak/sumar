@@ -15,5 +15,14 @@
    ],
    "theme_color": "#8f7a66",
    "background_color": "#faf8ef",
-   "display": "standalone"
+   "display": "fullscreen",
+   "orientation": "portrait",
+   "start_url": "/",
+   "dir": "auto",
+   "lang": "cs",
+   "categories": [
+      "education",
+      "games",
+      "lifestyle"
+   ]
 }
