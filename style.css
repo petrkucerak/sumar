@@ -231,5 +231,23 @@ a {
 .correct {
   color: #776e655d;
 }
-
 /* end game board */
+
+/* start of responsive section */
+
+@media only screen and (max-width: 480px) {
+  .game-cell,
+  .game-header-cell {
+    font-size: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.2rem;
+  }
+  .cell-use:after {
+    border: #776e65 2.5px solid;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+/* end of responsive section */
