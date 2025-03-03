@@ -397,4 +397,26 @@ a {
   font-size: 1rem;
   line-height: 1.7rem;
 }
+
+.glory-list {
+  width: 90vw;
+  max-width: 800px;
+}
+.scoreHall {
+  text-align: right;
+}
+
+.name {
+  word-break: break-all;
+}
+
+.first {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.top {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 /* end the hall of throne style */

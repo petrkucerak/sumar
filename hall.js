@@ -24,7 +24,7 @@ async function renderScoreboard() {
      <tr class="${e.class !== undefined ? e.class : ""}" >
        <td class="id">${e.id}.</td>
        <td class="name">${e.name} ${e.id === 1 ? "👑" : ""}</td>
-       <td class="score">${e.metadata.score}&nbsp;b</td>
+       <td class="scoreHall">${e.metadata.score}&nbsp;b</td>
      </tr>`;
   });
 
