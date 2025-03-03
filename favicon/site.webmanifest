@@ -1,5 +1,6 @@
 {
    "name": "Sumář - Jednoduchá sčítací hra",
+   "description": "Sčítej, odčítej, kombinuj a staň se nejlepším sumářem na jarním Diecézku 2025 v Královehradecké diecézi.",
    "short_name": "Sumář",
    "icons": [
       {
@@ -15,5 +16,14 @@
    ],
    "theme_color": "#8f7a66",
    "background_color": "#faf8ef",
-   "display": "standalone"
+   "display": "fullscreen",
+   "orientation": "portrait",
+   "start_url": "/",
+   "dir": "auto",
+   "lang": "cs",
+   "categories": [
+      "education",
+      "games",
+      "lifestyle"
+   ]
 }
