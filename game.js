@@ -119,6 +119,22 @@ function renderLevel() {
   // Clear previous board
   gameBoardEl.innerHTML = "";
 
+  // create header col
+  {
+    const gameHeaderColEl = document.createElement("div");
+    gameHeaderColEl.id = `game-header-col`;
+    gameHeaderColEl.className = "game-header-col";
+    gameBoardEl.appendChild(gameHeaderColEl);
+
+    for (let col = 0; col < gameBoard.cols; col += 1) {
+      const gameHeaderCellEl = document.createElement("div");
+      gameHeaderCellEl.id = `game-header-cell-col-${col}`;
+      gameHeaderCellEl.className = "game-header-cell";
+      gameHeaderCellEl.textContent = level.col[col];
+      gameHeaderColEl.appendChild(gameHeaderCellEl);
+    }
+  }
+
   for (let row = 0; row < gameBoard.rows; row += 1) {
     const gameRowEl = document.createElement("div");
     gameRowEl.id = `game-row-${row}`;
@@ -132,12 +148,18 @@ function renderLevel() {
       gameCellEl.textContent = level.board[row][col];
       gameRowEl.appendChild(gameCellEl);
     }
+    {
+      const gameHeaderCellEl = document.createElement("div");
+      gameHeaderCellEl.id = `game-header-cell-row-${row}`;
+      gameHeaderCellEl.className = "game-header-cell";
+      gameHeaderCellEl.textContent = level.row[row];
+      gameRowEl.appendChild(gameHeaderCellEl);
+    }
   }
 }
 // Ensure rendering happens after game initialization
 document.addEventListener("DOMContentLoaded", function () {
   initGame().then(() => {
     renderLevel();
-    console.log(levelsMap);
   });
 });
