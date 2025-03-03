@@ -29,6 +29,49 @@ function updateCellClass(cell, status) {
   }
 }
 
+function computeSum(row, col) {
+  const level = levelsMap[gameLevel];
+
+  // Check col
+  const colSumTarget = level.col[col];
+  let colSum = 0;
+  for (let i = 0; i < level.size[0]; i += 1) {
+    colSum +=
+      gameBoard.mask[i][col] == CellStatus.USE ? level.board[i][col] : 0;
+  }
+  if (colSum === colSumTarget) {
+    // Set opacity for all col
+    for (let i = 0; i < level.size[0]; i += 1) {
+      const el = document.getElementById(`game-cell-${i}-${col}`);
+      el.classList.add("correct");
+    }
+  } else {
+    for (let i = 0; i < level.size[0]; i += 1) {
+      const el = document.getElementById(`game-cell-${i}-${col}`);
+      el.classList.remove("correct");
+    }
+  }
+  // Check row
+  const rowSumTarget = level.row[row];
+  let rowSum = 0;
+  for (let i = 0; i < level.size[0]; i += 1) {
+    rowSum +=
+      gameBoard.mask[row][i] == CellStatus.USE ? level.board[row][i] : 0;
+  }
+  if (rowSum === rowSumTarget) {
+    // Set opacity for all col
+    for (let i = 0; i < level.size[0]; i += 1) {
+      const el = document.getElementById(`game-cell-${row}-${i}`);
+      el.classList.add("correct");
+    }
+  } else {
+    for (let i = 0; i < level.size[0]; i += 1) {
+      const el = document.getElementById(`game-cell-${row}-${i}`);
+      el.classList.remove("correct");
+    }
+  }
+}
+
 function pad(num, size) {
   num = num.toString();
   while (num.length < size) num = "0" + num;
@@ -191,6 +234,8 @@ function renderLevel() {
         setCellStatus(row, col, gameCellEl.status);
         // Update the class based on the status
         updateCellClass(gameCellEl, gameCellEl.status);
+        // Compute sum
+        computeSum(row, col);
       });
       gameRowEl.appendChild(gameCellEl);
     }

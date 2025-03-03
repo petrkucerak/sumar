@@ -225,5 +225,8 @@ a {
   background-color: #ef233c;
   color: #faf8ef;
 }
+.correct {
+  opacity: 0.5;
+}
 
 /* end game board */
