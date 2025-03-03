@@ -1,5 +1,5 @@
 let gameLevel = 1;
-let gameTime = 0;
+let levelTime = 0;
 let gameScore = 0;
 let levelCycles = 1;
 
@@ -87,23 +87,23 @@ function pad(num, size) {
 }
 
 function setGameLevel(value) {
-  gameLevel = value;
+  gameLevel = parseInt(value);
   localStorage.setItem("gameLevel", value);
   document.getElementById("gameLevel").innerText = value;
 }
 function setLevelCycles(value) {
-  gameLevel = value;
+  levelCycles = parseInt(value);
   localStorage.setItem("levelCycles", value);
 }
-function setGameTime(value) {
-  gameTime = value;
-  localStorage.setItem("gameTime", value);
+function setLevelTime(value) {
+  levelTime = parseInt(value);
+  localStorage.setItem("levelTime", value);
   const hour = Math.round(value / 60);
   const min = value % 60;
-  document.getElementById("gameTime").innerText = `${hour}:${pad(min, 2)}`;
+  document.getElementById("levelTime").innerText = `${hour}:${pad(min, 2)}`;
 }
 function setGameScore(value) {
-  gameScore = value;
+  gameScore = parseInt(value);
   localStorage.setItem("gameScore", value);
   document.getElementById("gameScore").innerText = value;
 }
@@ -120,10 +120,18 @@ function setCellStatus(row, col, status) {
 
 function setNewLevel() {
   // compute score
+  const levelScore = Math.floor(
+    (gameBoard.rows * gameBoard.cols * 10) / ((levelTime / 60) * levelCycles)
+  );
+  setGameScore(gameScore + levelScore);
+
+  // reset level timer
+  setLevelTime(0);
+  setLevelCycles(1);
 
   // load new level
   setGameLevel(gameLevel + 1);
-  createGameBoardByLevel(levelsMap[gameLevel]);
+  setGameBoard(createGameBoardByLevel(levelsMap[gameLevel]));
   renderLevel();
 }
 
@@ -140,9 +148,9 @@ function createGameBoardByLevel(level) {
   return gameBoard;
 }
 
-function startGameTime() {
+function startLevelTime() {
   setInterval(() => {
-    setGameTime(parseInt(gameTime) + 1);
+    setLevelTime(parseInt(levelTime) + 1);
   }, 1000); // 1000 ms = 1 s
 }
 
@@ -166,9 +174,9 @@ async function initGame() {
   // INIT GAME VARIABLES
   setGameLevel(localStorage.getItem("gameLevel") || 1);
   setLevelCycles(localStorage.getItem("levelCycles") || 1);
-  setGameTime(localStorage.getItem("gameTime") || 0);
+  setLevelTime(localStorage.getItem("levelTime") || 0);
   setGameScore(localStorage.getItem("gameScore") || 0);
-  startGameTime();
+  startLevelTime();
 
   // INIT LEVEL MAPS
   const levelPromises = [];
@@ -261,6 +269,7 @@ function renderLevel() {
             break;
           case CellStatus.NOT:
             gameCellEl.status = CellStatus.UNKNOWN;
+            setLevelCycles(levelCycles + 1);
             break;
         }
         // Save status to the memory
