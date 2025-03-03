@@ -7,7 +7,7 @@ It is responsible for assembling and outputting different game board configurati
 import random
 import json
 
-BOARD_MIN_INT = 0
+BOARD_MIN_INT = 1
 BOARD_MAX_INT = 9
 
 # Create a matrix
