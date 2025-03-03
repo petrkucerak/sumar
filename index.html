@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sumář - Jednoduchá sčítací hra</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="fonts/roboto.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Sumář - Jednoduchá sčítací hra</title>
-   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-   <link rel="manifest" href="/favicon/site.webmanifest" />
-   <link rel="stylesheet" href="fonts/roboto.css" />
-   <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-   <header class="title">
+  <body>
+    <header class="title">
       <h1>Sumář</h1>
-   </header>
-   <main>
+    </header>
+    <main>
       <div class="control">
-         <div class="level">1</div>
-         <div class="time">00:00</div>
-         <div class="score">0</div>
+        <div class="level" id="gameLevel">1</div>
+        <div class="time" id="gameTime">00:00</div>
+        <div class="score" id="gameScore">0</div>
       </div>
-      <div class="game">
-         
-      </div>
+      <div class="game"></div>
       <div class="tutorial">jak hrat</div>
-   </main>
-   <footer>
+    </main>
+    <footer>
       <hr />
       <p>
-         Vytvořil
-         <a href="https://petrkucerak.cz/" target="_blank">Petr Kučera</a>, inspirováno hrou sumplete.</a>
+        Vytvořil
+        <a href="https://petrkucerak.cz/" target="_blank">Petr Kučera</a>,
+        inspirováno hrou sumplete.
       </p>
-   </footer>
-</body>
-
+      <script src="game.js"></script>
+    </footer>
+  </body>
 </html>
