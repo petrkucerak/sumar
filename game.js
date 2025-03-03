@@ -3,7 +3,7 @@ let gameTime = 0;
 let gameScore = 0;
 
 let levelsMap = [];
-let gameBoard = [];
+let gameBoard = null;
 
 const CellStatus = {
   UNKNOWN: 0,
@@ -77,62 +77,68 @@ async function initGame() {
   // Init resources
 
   // INIT GAME VARIABLES
-  // init gameLevel variable
-  if (localStorage.getItem("gameLevel") !== null)
-    setGameLevel(localStorage.getItem("gameLevel"));
-  else setGameLevel(1);
-
-  // init gameTime variable
-  if (localStorage.getItem("gameTime") !== null)
-    setGameTime(localStorage.getItem("gameTime"));
-  else setGameTime(0);
-  // and start game time
+  setGameLevel(localStorage.getItem("gameLevel") || 1);
+  setGameTime(localStorage.getItem("gameTime") || 0);
+  setGameScore(localStorage.getItem("gameScore") || 0);
   startGameTime();
 
-  // init score variable
-  if (localStorage.getItem("gameScore") !== null)
-    setGameScore(localStorage.getItem("gameScore"));
-  else setGameScore(0);
-
   // INIT LEVEL MAPS
-  // Init 5x5 size
-  if (localStorage.getItem("5x5_levels") !== null) {
-    levelsMap = levelsMap.concat(
-      JSON.parse(localStorage.getItem("5x5_levels"))
-    );
-  } else {
-    const level = await getLevelMap("/data/5x5_levels.json");
-    levelsMap = levelsMap.concat(level);
-    localStorage.setItem("5x5_levels", JSON.stringify(level));
+  const levelPromises = [];
+  const levelSizes = ["5x5", "7x7", "9x9"];
+
+  for (const size of levelSizes) {
+    if (localStorage.getItem(`${size}_levels`) !== null) {
+      levelsMap = levelsMap.concat(
+        JSON.parse(localStorage.getItem(`${size}_levels`))
+      );
+    } else {
+      levelPromises.push(
+        getLevelMap(`/data/${size}_levels.json`).then((level) => {
+          levelsMap = levelsMap.concat(level);
+          localStorage.setItem(`${size}_levels`, JSON.stringify(level));
+        })
+      );
+    }
   }
 
-  // Init 7x7 size
-  if (localStorage.getItem("7x7_levels") !== null) {
-    levelsMap = levelsMap.concat(
-      JSON.parse(localStorage.getItem("7x7_levels"))
-    );
-  } else {
-    const level = await getLevelMap("/data/7x7_levels.json");
-    levelsMap = levelsMap.concat(level);
-    localStorage.setItem("7x7_levels", JSON.stringify(level));
-  }
-
-  // Init 9x9 size
-  if (localStorage.getItem("9x9_levels") !== null) {
-    levelsMap = levelsMap.concat(
-      JSON.parse(localStorage.getItem("9x9_levels"))
-    );
-  } else {
-    const level = await getLevelMap("/data/9x9_levels.json");
-    levelsMap = levelsMap.concat(level);
-    localStorage.setItem("9x9_levels", JSON.stringify(level));
-  }
+  // Wait for all level data to load
+  await Promise.all(levelPromises);
 
   // INIT GAME BOARD
   if (localStorage.getItem("gameBoard") !== null)
     gameBoard = JSON.parse(localStorage.getItem("gameBoard"));
-  else setGameBoard(createGameBoardByLevel(levelsMap[0]));
+  else setGameBoard(createGameBoardByLevel(levelsMap[gameLevel]));
 }
 
-initGame();
-console.log(levelsMap);
+function renderLevel() {
+  // Render game status by game data
+  // Render gameboard
+  const level = levelsMap[gameLevel];
+  const gameBoardEl = document.getElementById("gameboard");
+
+  // Clear previous board
+  gameBoardEl.innerHTML = "";
+
+  for (let row = 0; row < gameBoard.rows; row += 1) {
+    const gameRowEl = document.createElement("div");
+    gameRowEl.id = `game-row-${row}`;
+    gameRowEl.className = "game-row";
+    gameBoardEl.appendChild(gameRowEl);
+
+    for (let col = 0; col < gameBoard.cols; col += 1) {
+      console.log("rendering");
+      const gameCellEl = document.createElement("div");
+      gameCellEl.id = `game-cell-${row}-${col}`;
+      gameCellEl.className = "game-cell";
+      gameCellEl.textContent = level.board[row][col];
+      gameRowEl.appendChild(gameCellEl);
+    }
+  }
+}
+// Ensure rendering happens after game initialization
+document.addEventListener("DOMContentLoaded", function () {
+  initGame().then(() => {
+    renderLevel();
+    console.log(levelsMap);
+  });
+});
