@@ -134,6 +134,13 @@ function setNewLevel() {
   setGameLevel(gameLevel + 1);
   setGameBoard(createGameBoardByLevel(levelsMap[gameLevel]));
   renderLevel();
+
+  renderCongratulation();
+}
+
+function renderCongratulation() {
+  const congratulationEl = document.getElementById("congratulation");
+  
 }
 
 function createGameBoardByLevel(level) {

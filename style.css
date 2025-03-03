@@ -262,3 +262,43 @@ a {
 }
 
 /* end of responsive section */
+
+/* start of congratulation section */
+.congratulation {
+  position: absolute;
+  width: 394.06px;
+  height: 394.06px;
+  background: #bbada0fb;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #faf8ef;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.congratulation .button {
+  color: #776e65;
+  margin: 0.3rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  padding: 14px 20px;
+  background-color: #faf8ef;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 480px) {
+  .congratulation {
+    width: 330.78px;
+    height: 330.78px;
+    font-size: 1.4rem;
+  }
+  .congratulation .button {
+    margin: 0.3rem;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+/* end of congratulation section */
