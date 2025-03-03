@@ -6,7 +6,7 @@ let levelsMap = [];
 let gameBoard = null;
 
 const CellStatus = {
-  UNKNOWN: 1002,
+  UNKNOWN: -1000,
   USE: 1,
   NOT: 0,
 };
@@ -214,7 +214,17 @@ function renderLevel() {
       gameCellEl.addEventListener("click", () => {
         // On click function
         // Change cell status
-        gameCellEl.status = (gameCellEl.status + 1) % 3;
+        switch (gameCellEl.status) {
+          case CellStatus.UNKNOWN:
+            gameCellEl.status = CellStatus.USE;
+            break;
+          case CellStatus.USE:
+            gameCellEl.status = CellStatus.NOT;
+            break;
+          case CellStatus.NOT:
+            gameCellEl.status = CellStatus.UNKNOWN;
+            break;
+        }
         // Save status to the memory
         setCellStatus(row, col, gameCellEl.status);
         // Update the class based on the status
