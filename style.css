@@ -45,6 +45,13 @@ a {
 }
 
 /* start control configuration */
+.reset {
+  font-size: 0.75rem;
+}
+.reset #reset {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .control {
   width: 100%;
   display: flex;

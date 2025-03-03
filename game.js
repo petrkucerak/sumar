@@ -204,6 +204,13 @@ async function initGame() {
   if (localStorage.getItem("gameBoard") !== null)
     gameBoard = JSON.parse(localStorage.getItem("gameBoard"));
   else setGameBoard(createGameBoardByLevel(levelsMap[gameLevel]));
+
+  // Add reset action
+  const resetEl = document.getElementById("reset");
+  resetEl.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+  });
 }
 
 function renderLevel() {
