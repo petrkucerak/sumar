@@ -28,6 +28,14 @@ footer {
 
 h1 {
   font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.title p {
+  margin: 0;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 a {
@@ -77,6 +85,7 @@ a {
 }
 .control {
   width: 100%;
+  max-width: 395px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
