@@ -3,6 +3,13 @@ let gameTime = 0;
 let gameScore = 0;
 
 let levelsMap = [];
+let gameBoard = [];
+
+const CellStatus = {
+  UNKNOWN: 0,
+  USE: 1,
+  NOT: 2,
+};
 
 function pad(num, size) {
   num = num.toString();
@@ -26,6 +33,24 @@ function setGameScore(value) {
   gameScore = value;
   localStorage.setItem("gameScore", value);
   document.getElementById("gameScore").innerText = value;
+}
+
+function setGameBoard(object) {
+  gameBoard = JSON.stringify(object);
+  localStorage.setItem("gameBoard", gameBoard);
+}
+
+function createGameBoardByLevel(level) {
+  const rows = level.size[0];
+  const cols = level.size[1];
+  gameBoard = {
+    rows: rows,
+    cols: cols,
+    mask: Array.from({ length: rows }, () =>
+      Array(cols).fill(CellStatus.UNKNOWN)
+    ),
+  };
+  return gameBoard;
 }
 
 function startGameTime() {
@@ -103,7 +128,10 @@ async function initGame() {
     localStorage.setItem("9x9_levels", JSON.stringify(level));
   }
 
-  //   3. download missing resources
+  // INIT GAME BOARD
+  if (localStorage.getItem("gameBoard") !== null)
+    gameBoard = JSON.parse(localStorage.getItem("gameBoard"));
+  else setGameBoard(createGameBoardByLevel(levelsMap[0]));
 }
 
 initGame();
