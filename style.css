@@ -34,6 +34,13 @@ a {
   color: #776e65;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 /* start control configuration */
 .control {
   width: 100%;
