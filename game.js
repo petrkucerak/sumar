@@ -6,9 +6,9 @@ let levelsMap = [];
 let gameBoard = null;
 
 const CellStatus = {
-  UNKNOWN: 0,
+  UNKNOWN: -1000,
   USE: 1,
-  NOT: 2,
+  NOT: 0,
 };
 
 function updateCellClass(cell, status) {
@@ -36,9 +36,9 @@ function computeSum(row, col) {
   const colSumTarget = level.col[col];
   let colSum = 0;
   for (let i = 0; i < level.size[0]; i += 1) {
-    colSum +=
-      gameBoard.mask[i][col] == CellStatus.USE ? level.board[i][col] : 0;
+    colSum += gameBoard.mask[i][col] * level.board[i][col];
   }
+
   if (colSum === colSumTarget) {
     // Set opacity for all col
     for (let i = 0; i < level.size[0]; i += 1) {
@@ -55,8 +55,7 @@ function computeSum(row, col) {
   const rowSumTarget = level.row[row];
   let rowSum = 0;
   for (let i = 0; i < level.size[0]; i += 1) {
-    rowSum +=
-      gameBoard.mask[row][i] == CellStatus.USE ? level.board[row][i] : 0;
+    rowSum += gameBoard.mask[row][i] * level.board[row][i];
   }
   if (rowSum === rowSumTarget) {
     // Set opacity for all col
@@ -225,6 +224,7 @@ function renderLevel() {
       gameCellEl.className = "game-cell";
       gameCellEl.textContent = level.board[row][col];
       gameCellEl.status = CellStatus.UNKNOWN;
+      // Update cell style and sum
       updateCellClass(gameCellEl, gameBoard.mask[row][col]);
       gameCellEl.addEventListener("click", () => {
         // On click function
@@ -240,6 +240,10 @@ function renderLevel() {
       gameRowEl.appendChild(gameCellEl);
     }
   }
+
+  // Check sums
+  for (let row = 0; row < gameBoard.rows; row += 1)
+    for (let col = 0; col < gameBoard.cols; col += 1) computeSum(row, col);
 }
 // Ensure rendering happens after game initialization
 document.addEventListener("DOMContentLoaded", function () {
