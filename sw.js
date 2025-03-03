@@ -74,8 +74,29 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // It can update the cache to serve updated content on the next request
-      return cachedResponse || fetch(event.request);
+      // Return cached response immediately if available
+      const fetchPromise = fetch(event.request)
+        .then((response) => {
+          // Don't cache responses that aren't successful
+          if (
+            !response ||
+            response.status !== 200 ||
+            response.type !== "basic"
+          ) {
+            return response;
+          }
+          // Clone and cache the new response for next time
+          const responseToCache = response.clone();
+          caches.open("pwa-assets").then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+          return response;
+        })
+        .catch(() => {
+          // Falls back to cached response on network failure
+        });
+
+      return cachedResponse || fetchPromise;
     })
   );
 });
