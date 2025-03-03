@@ -5,7 +5,7 @@ body {
   padding: 0;
 
   background: #faf8ef;
-  color: #3f3a36;
+  color: #776e65;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1.1rem;
 
@@ -31,7 +31,7 @@ a {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  color: #3f3a36;
+  color: #776e65;
 }
 
 .main {
@@ -52,7 +52,7 @@ a {
 .level {
   position: relative;
   display: inline-block;
-  background: #3f3a36;
+  background: #bbada0;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -80,7 +80,7 @@ a {
 .score {
   position: relative;
   display: inline-block;
-  background: #3f3a36;
+  background: #bbada0;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -108,7 +108,7 @@ a {
 .time {
   position: relative;
   display: inline-block;
-  background: #3f3a36;
+  background: #bbada0;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -154,7 +154,7 @@ a {
   justify-content: flex-start;
   justify-items: flex-start;
   flex-wrap: nowrap;
-  background: #3f3a36;
+  background: #bbada0;
   border-radius: 0.3rem;
   padding: 0.25rem;
 }
@@ -185,16 +185,15 @@ a {
   height: 3rem;
   margin: 0.25rem;
   border-radius: 0.3rem;
-  background: #2176ae;
+  background: #eedac4;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  color: #faf8ef;
 }
 .game-header-col {
   padding: 0.25rem;
-  background: #3f3a36;
+  background: #bbada0;
   width: min-content;
   border-radius: 0.3rem;
   margin-bottom: 0.4rem;
@@ -206,7 +205,7 @@ a {
   align-items: center;
   width: 100%;
   padding: 0.25rem;
-  background: #3f3a36;
+  background: #bbada0;
   width: min-content;
   border-radius: 0.3rem;
   margin-left: 0.4rem;
@@ -218,16 +217,19 @@ a {
   align-items: flex-start;
 }
 
-.cell-use {
-  background-color: #119822;
-  color: #faf8ef;
+.cell-use:after {
+  content: "";
+  border: #776e65 3px solid;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
 }
 .cell-not {
-  background-color: #ef233c;
-  color: #faf8ef;
+  color: #776e655d;
 }
 .correct {
-  opacity: 0.3;
+  color: #776e655d;
 }
 
 /* end game board */

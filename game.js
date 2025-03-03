@@ -39,44 +39,21 @@ function computeSum(row, col) {
     colSum += gameBoard.mask[i][col] * level.board[i][col];
   }
 
-  if (colSum === colSumTarget) {
-    // Set opacity for all col
-    for (let i = 0; i < level.size[0]; i += 1) {
-      const el = document.getElementById(`game-cell-${i}-${col}`);
-      el.classList.add("correct");
-    }
-    const hEl = document.getElementById(`game-header-cell-col-${col}`);
-    hEl.classList.add("correct", "cell-use");
-  } else {
-    for (let i = 0; i < level.size[0]; i += 1) {
-      const el = document.getElementById(`game-cell-${i}-${col}`);
-      el.classList.remove("correct");
-    }
-    const hEl = document.getElementById(`game-header-cell-col-${col}`);
-    hEl.classList.remove("correct", "cell-use");
-  }
+  const hElC = document.getElementById(`game-header-cell-col-${col}`);
+  colSum === colSumTarget
+    ? hElC.classList.add("correct")
+    : hElC.classList.remove("correct");
+
   // Check row
   const rowSumTarget = level.row[row];
   let rowSum = 0;
   for (let i = 0; i < level.size[0]; i += 1) {
     rowSum += gameBoard.mask[row][i] * level.board[row][i];
   }
-  if (rowSum === rowSumTarget) {
-    // Set opacity for all col
-    for (let i = 0; i < level.size[0]; i += 1) {
-      const el = document.getElementById(`game-cell-${row}-${i}`);
-      el.classList.add("correct");
-    }
-    const hEl = document.getElementById(`game-header-cell-row-${row}`);
-    hEl.classList.add("correct", "cell-use");
-  } else {
-    for (let i = 0; i < level.size[0]; i += 1) {
-      const el = document.getElementById(`game-cell-${row}-${i}`);
-      el.classList.remove("correct");
-    }
-    const hEl = document.getElementById(`game-header-cell-row-${row}`);
-    hEl.classList.remove("correct", "cell-use");
-  }
+  const hElR = document.getElementById(`game-header-cell-row-${row}`);
+  rowSum === rowSumTarget
+    ? hElR.classList.add("correct")
+    : hElR.classList.remove("correct");
 }
 
 function pad(num, size) {
