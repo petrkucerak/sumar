@@ -121,7 +121,8 @@ function setCellStatus(row, col, status) {
 function setNewLevel() {
   // compute score
   const levelScore = Math.floor(
-    (gameBoard.rows * gameBoard.cols * 10) / ((levelTime / 60) * levelCycles)
+    (gameBoard.rows * gameBoard.cols * 10) /
+      ((levelTime / 60 + 1) * levelCycles)
   );
   setGameScore(gameScore + levelScore);
 
