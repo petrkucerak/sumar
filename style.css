@@ -44,6 +44,29 @@ a {
   justify-content: flex-start;
 }
 
+.tutorial {
+  line-height: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tutorial p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.sin-slavy-box {
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #8f7a66;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
 /* start control configuration */
 .reset {
   font-size: 0.75rem;
@@ -418,5 +441,4 @@ a {
   font-weight: 500;
   font-size: 1.2rem;
 }
-
 /* end the hall of throne style */
