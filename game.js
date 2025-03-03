@@ -36,8 +36,8 @@ function setGameScore(value) {
 }
 
 function setGameBoard(object) {
-  gameBoard = JSON.stringify(object);
-  localStorage.setItem("gameBoard", gameBoard);
+  gameBoard = object;
+  localStorage.setItem("gameBoard", JSON.stringify(gameBoard));
 }
 
 function createGameBoardByLevel(level) {
@@ -126,7 +126,6 @@ function renderLevel() {
     gameBoardEl.appendChild(gameRowEl);
 
     for (let col = 0; col < gameBoard.cols; col += 1) {
-      console.log("rendering");
       const gameCellEl = document.createElement("div");
       gameCellEl.id = `game-cell-${row}-${col}`;
       gameCellEl.className = "game-cell";
