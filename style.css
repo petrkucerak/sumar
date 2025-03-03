@@ -306,3 +306,17 @@ a {
 .hidden {
   display: none;
 }
+
+/* start the hall of throne style */
+.hall h1 {
+  margin-bottom: 0;
+}
+.hall h2 {
+  margin-top: 0;
+}
+.hall p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+/* end the hall of throne style */
