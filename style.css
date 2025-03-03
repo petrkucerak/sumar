@@ -348,6 +348,10 @@ a {
   border-radius: 0.3rem;
   color: #faf8ef;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .sign2hall .button {
   color: #776e65;
@@ -362,7 +366,7 @@ a {
 
 .sign2hall .input {
   background: #fafafa;
-  width: 90%;
+  width: 80%;
   margin-top: 1rem;
   border: none;
   border-radius: 0.3rem;
