@@ -133,17 +133,17 @@ a {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: min-content;
 }
 .gameboard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  justify-items: center;
+  justify-content: flex-start;
+  justify-items: flex-start;
   flex-wrap: nowrap;
   background: #bbada0;
-  width: min-content;
   border-radius: 0.3rem;
   padding: 0.25rem;
 }
@@ -153,6 +153,7 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 .game-cell {
   font-size: 1.3rem;
@@ -177,5 +178,30 @@ a {
   justify-content: center;
   align-items: center;
   font-weight: 600;
+}
+.game-header-col {
+  padding: 0.25rem;
+  background: #bbada0;
+  width: min-content;
+  border-radius: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+.game-header-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem;
+  background: #bbada0;
+  width: min-content;
+  border-radius: 0.3rem;
+  margin-left: 0.4rem;
+}
+.game-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 /* end game board */

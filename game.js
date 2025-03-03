@@ -114,26 +114,38 @@ function renderLevel() {
   // Render game status by game data
   // Render gameboard
   const level = levelsMap[gameLevel];
-  const gameBoardEl = document.getElementById("gameboard");
 
-  // Clear previous board
-  gameBoardEl.innerHTML = "";
-
-  // create header col
+  // Create GAME HEADER
   {
-    const gameHeaderColEl = document.createElement("div");
-    gameHeaderColEl.id = `game-header-col`;
-    gameHeaderColEl.className = "game-header-col";
-    gameBoardEl.appendChild(gameHeaderColEl);
+    const gameHeaderCol = document.getElementById("game-header-col");
+    gameHeaderCol.innerHTML = "";
 
     for (let col = 0; col < gameBoard.cols; col += 1) {
       const gameHeaderCellEl = document.createElement("div");
       gameHeaderCellEl.id = `game-header-cell-col-${col}`;
       gameHeaderCellEl.className = "game-header-cell";
       gameHeaderCellEl.textContent = level.col[col];
-      gameHeaderColEl.appendChild(gameHeaderCellEl);
+      gameHeaderCol.appendChild(gameHeaderCellEl);
     }
   }
+  {
+    const gameHeaderRow = document.getElementById("game-header-row");
+    gameHeaderRow.innerHTML = "";
+
+    for (let row = 0; row < gameBoard.rows; row += 1) {
+      const gameHeaderCellEl = document.createElement("div");
+      gameHeaderCellEl.id = `game-header-cell-row-${row}`;
+      gameHeaderCellEl.className = "game-header-cell";
+      gameHeaderCellEl.textContent = level.row[row];
+      gameHeaderRow.appendChild(gameHeaderCellEl);
+    }
+  }
+
+  // Create gameborad
+  const gameBoardEl = document.getElementById("gameboard");
+
+  // Clear previous board
+  gameBoardEl.innerHTML = "";
 
   for (let row = 0; row < gameBoard.rows; row += 1) {
     const gameRowEl = document.createElement("div");
@@ -147,13 +159,6 @@ function renderLevel() {
       gameCellEl.className = "game-cell";
       gameCellEl.textContent = level.board[row][col];
       gameRowEl.appendChild(gameCellEl);
-    }
-    {
-      const gameHeaderCellEl = document.createElement("div");
-      gameHeaderCellEl.id = `game-header-cell-row-${row}`;
-      gameHeaderCellEl.className = "game-header-cell";
-      gameHeaderCellEl.textContent = level.row[row];
-      gameRowEl.appendChild(gameHeaderCellEl);
     }
   }
 }
