@@ -143,6 +143,10 @@ a {
   justify-content: flex-start;
   align-items: flex-start;
   width: min-content;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .gameboard {
   display: flex;
@@ -173,6 +177,7 @@ a {
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  cursor: pointer;
 }
 .game-header-cell {
   font-size: 1.3rem;

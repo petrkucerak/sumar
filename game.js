@@ -40,6 +40,11 @@ function setGameBoard(object) {
   localStorage.setItem("gameBoard", JSON.stringify(gameBoard));
 }
 
+function setCellStatus(row, col, status) {
+  gameBoard.mask[row][col] = status;
+  localStorage.setItem("gameBoard", JSON.stringify(gameBoard));
+}
+
 function createGameBoardByLevel(level) {
   const rows = level.size[0];
   const cols = level.size[1];
@@ -158,6 +163,13 @@ function renderLevel() {
       gameCellEl.id = `game-cell-${row}-${col}`;
       gameCellEl.className = "game-cell";
       gameCellEl.textContent = level.board[row][col];
+      gameCellEl.status = CellStatus.UNKNOWN;
+      gameCellEl.addEventListener("click", () => {
+        gameCellEl.status === 2
+          ? (gameCellEl.status = 0)
+          : (gameCellEl.status += 1);
+        setCellStatus(row, col, gameCellEl.status);
+      });
       gameRowEl.appendChild(gameCellEl);
     }
   }
