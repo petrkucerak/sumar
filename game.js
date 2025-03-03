@@ -13,7 +13,7 @@ const CellStatus = {
 
 function updateCellClass(cell, status) {
   // Remove only the cell status classes, keep other classes
-  cell.classList.remove("cell-use", "cell-not", "cell-unknown");
+  cell.classList.remove("cell-use", "cell-not");
 
   // Add the corresponding class
   switch (status) {
