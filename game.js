@@ -45,11 +45,15 @@ function computeSum(row, col) {
       const el = document.getElementById(`game-cell-${i}-${col}`);
       el.classList.add("correct");
     }
+    const hEl = document.getElementById(`game-header-cell-col-${col}`);
+    hEl.classList.add("correct", "cell-use");
   } else {
     for (let i = 0; i < level.size[0]; i += 1) {
       const el = document.getElementById(`game-cell-${i}-${col}`);
       el.classList.remove("correct");
     }
+    const hEl = document.getElementById(`game-header-cell-col-${col}`);
+    hEl.classList.remove("correct", "cell-use");
   }
   // Check row
   const rowSumTarget = level.row[row];
@@ -63,11 +67,15 @@ function computeSum(row, col) {
       const el = document.getElementById(`game-cell-${row}-${i}`);
       el.classList.add("correct");
     }
+    const hEl = document.getElementById(`game-header-cell-row-${row}`);
+    hEl.classList.add("correct", "cell-use");
   } else {
     for (let i = 0; i < level.size[0]; i += 1) {
       const el = document.getElementById(`game-cell-${row}-${i}`);
       el.classList.remove("correct");
     }
+    const hEl = document.getElementById(`game-header-cell-row-${row}`);
+    hEl.classList.remove("correct", "cell-use");
   }
 }
 
