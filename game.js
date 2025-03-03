@@ -1,6 +1,7 @@
 let gameLevel = 1;
 let gameTime = 0;
 let gameScore = 0;
+let levelCycles = 1;
 
 let levelsMap = [];
 let gameBoard = null;
@@ -47,13 +48,36 @@ function computeSum(row, col) {
   // Check row
   const rowSumTarget = level.row[row];
   let rowSum = 0;
-  for (let i = 0; i < level.size[0]; i += 1) {
+  for (let i = 0; i < level.size[1]; i += 1) {
     rowSum += gameBoard.mask[row][i] * level.board[row][i];
   }
   const hElR = document.getElementById(`game-header-cell-row-${row}`);
   rowSum === rowSumTarget
     ? hElR.classList.add("correct")
     : hElR.classList.remove("correct");
+}
+
+function isWin() {
+  const level = levelsMap[gameLevel];
+  // check cols
+  for (let col = 0; col < level.size[0]; col += 1)
+    if (
+      !document
+        .getElementById(`game-header-cell-col-${col}`)
+        .classList.contains("correct")
+    )
+      return false;
+
+  // check rows
+  for (let row = 0; row < level.size[1]; row += 1)
+    if (
+      !document
+        .getElementById(`game-header-cell-row-${row}`)
+        .classList.contains("correct")
+    )
+      return false;
+
+  return true;
 }
 
 function pad(num, size) {
@@ -66,6 +90,10 @@ function setGameLevel(value) {
   gameLevel = value;
   localStorage.setItem("gameLevel", value);
   document.getElementById("gameLevel").innerText = value;
+}
+function setLevelCycles(value) {
+  gameLevel = value;
+  localStorage.setItem("levelCycles", value);
 }
 function setGameTime(value) {
   gameTime = value;
@@ -88,6 +116,15 @@ function setGameBoard(object) {
 function setCellStatus(row, col, status) {
   gameBoard.mask[row][col] = status;
   localStorage.setItem("gameBoard", JSON.stringify(gameBoard));
+}
+
+function setNewLevel() {
+  // compute score
+
+  // load new level
+  setGameLevel(gameLevel + 1);
+  createGameBoardByLevel(levelsMap[gameLevel]);
+  renderLevel();
 }
 
 function createGameBoardByLevel(level) {
@@ -128,6 +165,7 @@ async function initGame() {
 
   // INIT GAME VARIABLES
   setGameLevel(localStorage.getItem("gameLevel") || 1);
+  setLevelCycles(localStorage.getItem("levelCycles") || 1);
   setGameTime(localStorage.getItem("gameTime") || 0);
   setGameScore(localStorage.getItem("gameScore") || 0);
   startGameTime();
@@ -231,6 +269,9 @@ function renderLevel() {
         updateCellClass(gameCellEl, gameCellEl.status);
         // Compute sum
         computeSum(row, col);
+
+        // Check winning status
+        if (isWin()) setNewLevel();
       });
       gameRowEl.appendChild(gameCellEl);
     }
