@@ -302,3 +302,7 @@ a {
   }
 }
 /* end of congratulation section */
+
+.hidden {
+  display: none;
+}

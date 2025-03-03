@@ -2,6 +2,7 @@ let gameLevel = 1;
 let levelTime = 0;
 let gameScore = 0;
 let levelCycles = 1;
+let running = 0;
 
 let levelsMap = [];
 let gameBoard = null;
@@ -139,8 +140,14 @@ function setNewLevel() {
 }
 
 function renderCongratulation() {
+  // pause timer
+  running = 0;
+
+  const levelInfo = document.getElementById("level-info");
+  levelInfo.innerText = `${gameLevel - 1}`;
+
   const congratulationEl = document.getElementById("congratulation");
-  
+  congratulationEl.classList.remove("hidden");
 }
 
 function createGameBoardByLevel(level) {
@@ -158,7 +165,7 @@ function createGameBoardByLevel(level) {
 
 function startLevelTime() {
   setInterval(() => {
-    setLevelTime(parseInt(levelTime) + 1);
+    if (running) setLevelTime(parseInt(levelTime) + 1);
   }, 1000); // 1000 ms = 1 s
 }
 
@@ -184,7 +191,9 @@ async function initGame() {
   setLevelCycles(localStorage.getItem("levelCycles") || 1);
   setLevelTime(localStorage.getItem("levelTime") || 0);
   setGameScore(localStorage.getItem("gameScore") || 0);
+
   startLevelTime();
+  running = 1;
 
   // INIT LEVEL MAPS
   const levelPromises = [];
@@ -218,6 +227,16 @@ async function initGame() {
   resetEl.addEventListener("click", () => {
     localStorage.clear();
     location.reload();
+  });
+
+  // Add configuration hooks
+  const nextLevelEl = document.getElementById("next-level");
+  nextLevelEl.addEventListener("click", () => {
+    // start timer
+    running = 1;
+    // hide the configuration window
+    const congratulationEl = document.getElementById("congratulation");
+    congratulationEl.classList.add("hidden");
   });
 }
 
