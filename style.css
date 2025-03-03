@@ -303,6 +303,84 @@ a {
 }
 /* end of congratulation section */
 
+/* start of sign2hall section */
+.sign2hall {
+  position: absolute;
+  width: 394.06px;
+  height: 394.06px;
+  background: #bbada0fb;
+  border-radius: 0.3rem;
+  color: #faf8ef;
+  padding: 1rem;
+}
+.sign2hall .button {
+  color: #776e65;
+  margin: 0.3rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  padding: 10px 14px;
+  background-color: #faf8ef;
+  cursor: pointer;
+}
+
+.sign2hall .input {
+  background: #fafafa;
+  width: 90%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-family: "Roboto", Arial, sans-serif;
+  padding: 0.3rem;
+  color: #776e65;
+  font-weight: 600;
+  outline: none;
+  font-size: 1rem;
+}
+
+.sign2hall .buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sign2hall .status {
+  text-align: center;
+  width: 100%;
+}
+
+.sign2hall h2 {
+  margin: 0;
+}
+.sign2hall p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .sign2hall {
+    width: 330.78px;
+    height: 330.78px;
+    font-size: 1.4rem;
+    padding: 0;
+  }
+  .sign2hall h2 {
+    margin: 0.5rem 0.5rem;
+    font-size: 1rem;
+  }
+  .sign2hall p {
+    margin: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .sign2hall .input {
+    font-size: 0.9rem;
+    margin: 0.1rem 0.5rem;
+  }
+}
+/* end of sign2hall section */
+
 .hidden {
   display: none;
 }

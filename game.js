@@ -238,6 +238,12 @@ async function initGame() {
     const congratulationEl = document.getElementById("congratulation");
     congratulationEl.classList.add("hidden");
   });
+
+  const hallsign2hallOpen = document.getElementById("sign-to-hall");
+  hallsign2hallOpen.addEventListener("click", () => {
+    const congratulationEl = document.getElementById("sign2hall");
+    congratulationEl.classList.remove("hidden");
+  });
 }
 
 function renderLevel() {

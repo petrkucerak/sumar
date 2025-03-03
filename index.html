@@ -42,6 +42,41 @@
           <div class="button" id="next-level">další level</div>
           <div class="button" id="sign-to-hall">zapsat se do síně slávy</div>
         </div>
+        <div class="sign2hall hidden" id="sign2hall">
+          <h2>Zapsat se do síně slávy</h2>
+          <p>
+            Pokud se rozhodneš vytesat své jméno do síně slávy, máš šanci na
+            diecézku vyhrát speciální dárek.
+          </p>
+          <p>
+            <strong>Přezdívka</strong> - spolu s ní bude do Síně slávy vytesáno
+            maximální skóre.
+          </p>
+          <p>
+            <strong>Tajné slovo</strong> - pokud tvoříš svoji přezdívku poprvé,
+            dobře si ho zapamatuj. Pro aktualizaci budeš muset vepsat stejné
+            slovo.
+          </p>
+          <input
+            id="nickname"
+            class="input"
+            name="nickname"
+            placeholder="Tvoje přezdívka"
+            type="text"
+          />
+          <input
+            id="secret"
+            name="secret"
+            class="input"
+            placeholder="Tajné slovo"
+            type="password"
+          />
+          <p id="status"></p>
+          <div class="buttons">
+            <div class="submit button" onclick="sendScore()">Odeslat</div>
+            <div onclick="closeGloryBox()" class="submit button">Zavřít</div>
+          </div>
+        </div>
         <div class="game-header-col" id="game-header-col"></div>
         <div class="game-container">
           <div class="gameboard" id="gameboard"></div>
@@ -62,6 +97,7 @@
         inspirováno hrou sumplete.
       </p>
       <script src="game.js"></script>
+      <script src="post2scoreboard.js"></script>
     </footer>
   </body>
 </html>
