@@ -6,7 +6,7 @@ let levelsMap = [];
 let gameBoard = null;
 
 const CellStatus = {
-  UNKNOWN: -1000,
+  UNKNOWN: 1002,
   USE: 1,
   NOT: 0,
 };

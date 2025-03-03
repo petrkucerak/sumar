@@ -5,7 +5,7 @@ body {
   padding: 0;
 
   background: #faf8ef;
-  color: #776e65;
+  color: #3f3a36;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1.1rem;
 
@@ -31,7 +31,7 @@ a {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  color: #776e65;
+  color: #3f3a36;
 }
 
 .main {
@@ -52,7 +52,7 @@ a {
 .level {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3f3a36;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -80,7 +80,7 @@ a {
 .score {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3f3a36;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -108,7 +108,7 @@ a {
 .time {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3f3a36;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
@@ -154,7 +154,7 @@ a {
   justify-content: flex-start;
   justify-items: flex-start;
   flex-wrap: nowrap;
-  background: #bbada0;
+  background: #3f3a36;
   border-radius: 0.3rem;
   padding: 0.25rem;
 }
@@ -185,15 +185,16 @@ a {
   height: 3rem;
   margin: 0.25rem;
   border-radius: 0.3rem;
-  background: #eedac4;
+  background: #2176ae;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  color: #faf8ef;
 }
 .game-header-col {
   padding: 0.25rem;
-  background: #bbada0;
+  background: #3f3a36;
   width: min-content;
   border-radius: 0.3rem;
   margin-bottom: 0.4rem;
@@ -205,7 +206,7 @@ a {
   align-items: center;
   width: 100%;
   padding: 0.25rem;
-  background: #bbada0;
+  background: #3f3a36;
   width: min-content;
   border-radius: 0.3rem;
   margin-left: 0.4rem;
@@ -218,7 +219,7 @@ a {
 }
 
 .cell-use {
-  background-color: #475841;
+  background-color: #119822;
   color: #faf8ef;
 }
 .cell-not {
