@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
 
-  background: #F5EFE7;
+  background: #f5efe7;
   color: #213555;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1.1rem;
@@ -71,8 +71,8 @@ a {
 .sin-slavy-box {
   text-transform: uppercase;
   text-decoration: none;
-  background: #3E5879;
-  color: #F5EFE7;
+  background: #3e5879;
+  color: #f5efe7;
   /* border-radius: 3px; */
   padding: 0.7rem 1rem;
   cursor: pointer;
@@ -89,7 +89,7 @@ a {
 }
 .control {
   width: 100%;
-  max-width: 395px;
+  max-width: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -98,14 +98,14 @@ a {
 .level {
   position: relative;
   display: inline-block;
-  background: #3E5879;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
   /* border-radius: 3px; */
-  color: #F5EFE7;
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -120,20 +120,20 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #F5EFE7;
+  color: #f5efe7;
 }
 
 .score {
   position: relative;
   display: inline-block;
-  background: #3E5879;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
   /* border-radius: 3px; */
-  color: #F5EFE7;
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -148,20 +148,20 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #F5EFE7;
+  color: #f5efe7;
 }
 
 .time {
   position: relative;
   display: inline-block;
-  background: #3E5879;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
   /* border-radius: 3px; */
-  color: #F5EFE7;
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -176,7 +176,7 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #F5EFE7;
+  color: #f5efe7;
 }
 
 /* end control configuration */
@@ -219,7 +219,7 @@ a {
   height: 3rem;
   margin: 0.09rem;
   /* border-radius: 0.3rem; */
-  background: #F5EFE7;
+  background: #f5efe7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -232,8 +232,8 @@ a {
   height: 3rem;
   margin: 0.09rem;
   /* border-radius: 0.3rem; */
-  background: #3E5879;
-  color: #F5EFE7;
+  background: #3e5879;
+  color: #f5efe7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -241,7 +241,7 @@ a {
 }
 .game-header-col {
   padding: 0.09rem;
-  background: #3E5879;
+  background: #3e5879;
   width: min-content;
   /* border-radius: 0.3rem; */
   margin-top: 0.4rem;
@@ -253,7 +253,7 @@ a {
   align-items: center;
   width: 100%;
   padding: 0.09rem;
-  background: #3E5879;
+  background: #3e5879;
   width: min-content;
   /* border-radius: 0.3rem; */
   margin-left: 0.4rem;
@@ -290,7 +290,7 @@ a {
     width: 2.5rem;
     height: 2.5rem;
     margin: 0.2rem;
-    margin: .05rem;
+    margin: 0.05rem;
   }
   .cell-use:after {
     border: #213555 2.5px solid;
@@ -306,25 +306,24 @@ a {
   position: absolute;
   width: 349.06px;
   height: 349.06px;
-  background: #3E5879fb;
+  background: #3e5879fb;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #F5EFE7;
+  color: #f5efe7;
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
-
 }
 .congratulation .button {
-  color: #3E5879;
+  color: #3e5879;
   margin: 0.3rem;
   border-radius: 0.3rem;
   font-size: 1rem;
   padding: 14px 20px;
-  background-color: #F5EFE7;
+  background-color: #f5efe7;
   cursor: pointer;
 }
 
@@ -347,9 +346,9 @@ a {
   position: absolute;
   width: 349.06px;
   height: 349.06px;
-  background: #3E5879fb;
+  background: #3e5879fb;
   border-radius: 0.3rem;
-  color: #F5EFE7;
+  color: #f5efe7;
   padding: 1rem;
 
   display: flex;
@@ -357,25 +356,25 @@ a {
   justify-content: space-between;
 }
 .sign2hall .button {
-  color: #3E5879;
+  color: #3e5879;
   margin: 0.3rem;
   font-weight: 600;
   border-radius: 0.3rem;
   font-size: 1rem;
   padding: 10px 14px;
-  background-color: #F5EFE7;
+  background-color: #f5efe7;
   cursor: pointer;
 }
 
 .sign2hall .input {
-  background: #F5EFE7;
+  background: #f5efe7;
   width: 80%;
   margin-top: 1rem;
   border: none;
   border-radius: 0.3rem;
   font-family: "Roboto", Arial, sans-serif;
   padding: 0.3rem;
-  color: #3E5879;
+  color: #3e5879;
   font-weight: 600;
   outline: none;
   font-size: 1rem;
