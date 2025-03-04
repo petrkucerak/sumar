@@ -4,8 +4,8 @@ body {
   margin: 0;
   padding: 0;
 
-  background: #faf8ef;
-  color: #776e65;
+  background: #f5efe7;
+  color: #213555;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1.1rem;
 
@@ -46,7 +46,7 @@ a {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-  color: #776e65;
+  color: #213555;
 }
 
 .main {
@@ -71,9 +71,9 @@ a {
 .sin-slavy-box {
   text-transform: uppercase;
   text-decoration: none;
-  background: #8f7a66;
-  color: #fff;
-  border-radius: 3px;
+  background: #3e5879;
+  color: #f5efe7;
+  /* border-radius: 3px; */
   padding: 0.7rem 1rem;
   cursor: pointer;
   margin: 1rem 0;
@@ -89,7 +89,7 @@ a {
 }
 .control {
   width: 100%;
-  max-width: 395px;
+  max-width: 400px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -98,14 +98,14 @@ a {
 .level {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
-  border-radius: 3px;
-  color: #fff;
+  /* border-radius: 3px; */
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -120,20 +120,20 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #eee4da;
+  color: #f5efe7;
 }
 
 .score {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
-  border-radius: 3px;
-  color: #fff;
+  /* border-radius: 3px; */
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -148,20 +148,20 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #eee4da;
+  color: #f5efe7;
 }
 
 .time {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #3e5879;
   padding: 15px 25px;
   font-size: 25px;
   height: 30px;
   line-height: 47px;
   font-weight: bold;
-  border-radius: 3px;
-  color: #fff;
+  /* border-radius: 3px; */
+  color: #f5efe7;
   margin-top: 8px;
   text-align: center;
 }
@@ -176,7 +176,7 @@ a {
   font-size: 13px;
   line-height: 13px;
   text-align: center;
-  color: #eee4da;
+  color: #f5efe7;
 }
 
 /* end control configuration */
@@ -201,9 +201,9 @@ a {
   justify-content: flex-start;
   justify-items: flex-start;
   flex-wrap: nowrap;
-  background: #bbada0;
-  border-radius: 0.3rem;
-  padding: 0.25rem;
+  background: #3e5879;
+  /* border-radius: 0.3rem; */
+  padding: 0.09rem;
 }
 .game-row,
 .game-header-col {
@@ -217,9 +217,9 @@ a {
   font-size: 1.3rem;
   width: 3rem;
   height: 3rem;
-  margin: 0.25rem;
-  border-radius: 0.3rem;
-  background: #ede3d9;
+  margin: 0.09rem;
+  /* border-radius: 0.3rem; */
+  background: #f5efe7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,20 +230,21 @@ a {
   font-size: 1.3rem;
   width: 3rem;
   height: 3rem;
-  margin: 0.25rem;
-  border-radius: 0.3rem;
-  background: #eedac4;
+  margin: 0.09rem;
+  /* border-radius: 0.3rem; */
+  background: #3e5879;
+  color: #f5efe7;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
 }
 .game-header-col {
-  padding: 0.25rem;
-  background: #bbada0;
+  padding: 0.09rem;
+  background: #3e5879;
   width: min-content;
-  border-radius: 0.3rem;
-  margin-bottom: 0.4rem;
+  /* border-radius: 0.3rem; */
+  margin-top: 0.4rem;
 }
 .game-header-row {
   display: flex;
@@ -251,10 +252,10 @@ a {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 0.25rem;
-  background: #bbada0;
+  padding: 0.09rem;
+  background: #3e5879;
   width: min-content;
-  border-radius: 0.3rem;
+  /* border-radius: 0.3rem; */
   margin-left: 0.4rem;
 }
 .game-container {
@@ -266,17 +267,17 @@ a {
 
 .cell-use:after {
   content: "";
-  border: #776e65 3px solid;
+  border: #213555 3px solid;
   position: absolute;
   width: 2rem;
   height: 2rem;
   border-radius: 100%;
 }
 .cell-not {
-  color: #776e655d;
+  color: #21355563;
 }
 .correct {
-  color: #776e655d;
+  color: #f5efe74f;
 }
 /* end game board */
 
@@ -289,9 +290,10 @@ a {
     width: 2.5rem;
     height: 2.5rem;
     margin: 0.2rem;
+    margin: 0.05rem;
   }
   .cell-use:after {
-    border: #776e65 2.5px solid;
+    border: #213555 2.5px solid;
     width: 1.8rem;
     height: 1.8rem;
   }
@@ -302,38 +304,38 @@ a {
 /* start of congratulation section */
 .congratulation {
   position: absolute;
-  width: 394.06px;
-  height: 394.06px;
-  background: #bbada0fb;
+  width: 349.06px;
+  height: 349.06px;
+  background: #3e5879fb;
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #faf8ef;
-  font-size: 1.8rem;
+  color: #f5efe7;
+  font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 .congratulation .button {
-  color: #776e65;
+  color: #3e5879;
   margin: 0.3rem;
   border-radius: 0.3rem;
   font-size: 1rem;
   padding: 14px 20px;
-  background-color: #faf8ef;
+  background-color: #f5efe7;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 480px) {
   .congratulation {
-    width: 330.78px;
-    height: 330.78px;
-    font-size: 1.4rem;
+    width: 287.84px;
+    height: 287.84px;
+    font-size: 1.3rem;
   }
   .congratulation .button {
     margin: 0.3rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 10px 16px;
   }
 }
@@ -342,11 +344,11 @@ a {
 /* start of sign2hall section */
 .sign2hall {
   position: absolute;
-  width: 394.06px;
-  height: 394.06px;
-  background: #bbada0fb;
+  width: 349.06px;
+  height: 349.06px;
+  background: #3e5879fb;
   border-radius: 0.3rem;
-  color: #faf8ef;
+  color: #f5efe7;
   padding: 1rem;
 
   display: flex;
@@ -354,25 +356,25 @@ a {
   justify-content: space-between;
 }
 .sign2hall .button {
-  color: #776e65;
+  color: #3e5879;
   margin: 0.3rem;
   font-weight: 600;
   border-radius: 0.3rem;
   font-size: 1rem;
   padding: 10px 14px;
-  background-color: #faf8ef;
+  background-color: #f5efe7;
   cursor: pointer;
 }
 
 .sign2hall .input {
-  background: #fafafa;
+  background: #f5efe7;
   width: 80%;
   margin-top: 1rem;
   border: none;
   border-radius: 0.3rem;
   font-family: "Roboto", Arial, sans-serif;
   padding: 0.3rem;
-  color: #776e65;
+  color: #3e5879;
   font-weight: 600;
   outline: none;
   font-size: 1rem;
@@ -400,8 +402,8 @@ a {
 
 @media only screen and (max-width: 480px) {
   .sign2hall {
-    width: 330.78px;
-    height: 330.78px;
+    width: 287.84px;
+    height: 287.84px;
     font-size: 1.4rem;
     padding: 0;
   }
@@ -415,8 +417,11 @@ a {
   }
 
   .sign2hall .input {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     margin: 0.1rem 0.5rem;
+  }
+  .sign2hall .button {
+    font-size: 0.8rem;
   }
 }
 /* end of sign2hall section */

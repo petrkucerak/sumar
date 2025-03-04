@@ -122,7 +122,8 @@ function setCellStatus(row, col, status) {
 function setNewLevel() {
   // compute score
   const levelScore = Math.floor(
-    (gameLevel * 100) / ((levelTime / 60 + 1) * levelCycles)
+    (gameLevel * gameBoard.rows * gameBoard.cols * 10) /
+      ((levelTime / 60 + 1) * levelCycles)
   );
   setGameScore(gameScore + levelScore);
 
@@ -200,11 +201,12 @@ async function initGame() {
     "5x5_1-5",
     "5x5_1-7",
     "5x5_1-9",
-    "5x5_-1-9",
-    "5x5_-1-12",
-    "5x5_-1-19",
-    "5x5_-9-19",
-    "5x5_-19-19",
+    "6x6_1-9",
+    "6x6_-1-9",
+    "6x6_-1-12",
+    "6x6_-1-19",
+    "6x6_-9-19",
+    "6x6_-19-19",
   ];
 
   for (const size of levelSizes) {
@@ -234,6 +236,7 @@ async function initGame() {
   const resetEl = document.getElementById("reset");
   resetEl.addEventListener("click", () => {
     localStorage.clear();
+    setLevelTime(0);
     location.reload();
   });
 
