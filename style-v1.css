@@ -202,8 +202,8 @@ a {
   justify-items: flex-start;
   flex-wrap: nowrap;
   background: #bbada0;
-  border-radius: 0.3rem;
-  padding: 0.25rem;
+  /* border-radius: 0.3rem; */
+  padding: 0.15rem;
 }
 .game-row,
 .game-header-col {
@@ -217,8 +217,8 @@ a {
   font-size: 1.3rem;
   width: 3rem;
   height: 3rem;
-  margin: 0.25rem;
-  border-radius: 0.3rem;
+  margin: 0.15rem;
+  /* border-radius: 0.3rem; */
   background: #ede3d9;
   display: flex;
   justify-content: center;
@@ -230,8 +230,8 @@ a {
   font-size: 1.3rem;
   width: 3rem;
   height: 3rem;
-  margin: 0.25rem;
-  border-radius: 0.3rem;
+  margin: 0.15rem;
+  /* border-radius: 0.3rem; */
   background: #eedac4;
   display: flex;
   justify-content: center;
@@ -239,11 +239,11 @@ a {
   font-weight: 600;
 }
 .game-header-col {
-  padding: 0.25rem;
+  padding: 0.15rem;
   background: #bbada0;
   width: min-content;
-  border-radius: 0.3rem;
-  margin-bottom: 0.4rem;
+  /* border-radius: 0.3rem; */
+  margin-top: 0.4rem;
 }
 .game-header-row {
   display: flex;
@@ -251,10 +251,10 @@ a {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 0.25rem;
+  padding: 0.15rem;
   background: #bbada0;
   width: min-content;
-  border-radius: 0.3rem;
+  /* border-radius: 0.3rem; */
   margin-left: 0.4rem;
 }
 .game-container {
