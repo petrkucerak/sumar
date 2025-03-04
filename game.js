@@ -234,6 +234,7 @@ async function initGame() {
   const resetEl = document.getElementById("reset");
   resetEl.addEventListener("click", () => {
     localStorage.clear();
+    setLevelTime(0);
     location.reload();
   });
 
