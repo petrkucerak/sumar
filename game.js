@@ -146,6 +146,7 @@ function renderCongratulation() {
   const levelInfo = document.getElementById("level-info");
   levelInfo.innerText = `${gameLevel - 1}`;
 
+
   const congratulationEl = document.getElementById("congratulation");
   congratulationEl.classList.remove("hidden");
 
