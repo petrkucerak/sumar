@@ -146,8 +146,13 @@ function renderCongratulation() {
   const levelInfo = document.getElementById("level-info");
   levelInfo.innerText = `${gameLevel - 1}`;
 
+
   const congratulationEl = document.getElementById("congratulation");
   congratulationEl.classList.remove("hidden");
+
+  const width = document.getElementById("game").offsetWidth;
+  const height = document.getElementById("game").offsetHeight;
+  congratulationEl.setAttribute("style", `height:${height}px;width:${width}px`);
 }
 
 function createGameBoardByLevel(level) {
