@@ -316,6 +316,7 @@ a {
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
+  z-index: 100;
 }
 .congratulation .button {
   color: #3e5879;
@@ -350,6 +351,7 @@ a {
   border-radius: 0.3rem;
   color: #f5efe7;
   padding: 1rem;
+  z-index: 101;
 
   display: flex;
   flex-direction: column;
