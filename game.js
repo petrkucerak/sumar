@@ -146,7 +146,6 @@ function renderCongratulation() {
   const levelInfo = document.getElementById("level-info");
   levelInfo.innerText = `${gameLevel - 1}`;
 
-
   const congratulationEl = document.getElementById("congratulation");
   congratulationEl.classList.remove("hidden");
 
@@ -241,6 +240,19 @@ async function initGame() {
   const resetEl = document.getElementById("reset");
   resetEl.addEventListener("click", () => {
     localStorage.clear();
+    setLevelTime(0);
+    location.reload();
+  });
+
+  // Add level reset action
+  const levelResetEl = document.getElementById("levelReset");
+  levelResetEl.addEventListener("click", () => {
+    // actual level game board
+    localStorage.removeItem("gameBoard");
+    // downloaded levels
+    for (const size of levelSizes) {
+      localStorage.removeItem(`${size}_levels`);
+    }
     setLevelTime(0);
     location.reload();
   });
