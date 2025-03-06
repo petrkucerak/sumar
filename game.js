@@ -245,6 +245,19 @@ async function initGame() {
     location.reload();
   });
 
+  // Add level reset action
+  const levelResetEl = document.getElementById("levelReset");
+  levelResetEl.addEventListener("click", () => {
+    // actual level game board
+    localStorage.removeItem("gameBoard");
+    // downloaded levels
+    for (const size of levelSizes) {
+      localStorage.removeItem(`${size}_levels`);
+    }
+    setLevelTime(0);
+    location.reload();
+  });
+
   // Add configuration hooks
   const nextLevelEl = document.getElementById("next-level");
   nextLevelEl.addEventListener("click", () => {
