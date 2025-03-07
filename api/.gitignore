@@ -1,0 +1,16 @@
+# Ignore files with data
+data.json
+
+# Ignore folders with files created by Docker
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+build/
+dist/
+*.log
+
+# Docker ignore
+.dockerignore

@@ -83,7 +83,8 @@ a {
 .reset {
   font-size: 0.75rem;
 }
-.reset #reset {
+.reset #reset,
+#levelReset {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -464,5 +465,9 @@ a {
 .top {
   font-weight: 500;
   font-size: 1.2rem;
+}
+
+.scoreLevel {
+  font-size: 0.8rem;
 }
 /* end the hall of throne style */
