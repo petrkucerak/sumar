@@ -41,11 +41,14 @@ def submit_score():
         if entry["name"] == name:
             if entry["secret"] != secret:
                 return jsonify({"error": "Invalid secret"}), 403
-            # Save max score
-            entry["score"] = max(entry["score"], score)
-            entry["level"] = max(entry["level"], level)
-            save_data(data)
-            return jsonify({"message": "Score updated"})
+
+            if score > entry["score"]:
+                entry["score"] = score
+                entry["level"] = max(entry["level"], level)
+                save_data(data)
+                return jsonify({"message": "Skóre bylo aktualizováno."})
+
+            return jsonify({"message": "Skóre nebylo překonáno, zůstává nezměněno."})
 
     return jsonify({"error": "User not found"}), 404
 
@@ -62,7 +65,7 @@ def register_user():
     for entry in data:
         if entry["name"] == name:
             if entry["secret"] == secret:
-                return jsonify({"message": "User already registered"})
+                return jsonify({"message": "Vítej zpět. Jméno a tajné slovo se shoduje s jiným záznamem. Pokud překonáš své současné skóre, zvýšíme ti ho i v síni slávy."})
             return jsonify({"error": "Jméno je již obsazené, buďto zadej správné tajné slovo nebo si zvol jiné jméno"}), 403
 
     data.append({"name": name, "secret": secret, "level": 0, "score": 0})
