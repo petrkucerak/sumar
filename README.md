@@ -2,7 +2,7 @@
 
 Jednoduchá počítací hra na diecézko 2025. Hra je inspirovaná horu sumate.
 
-## Backend
+## Scripts
 
 Python skript, který generuje herní levely. Funguje jednoduše. Vytvoří pole s náhodnými čísly (`board`) a druhé pole (`mask`) o stejné velikosti s náhodnými binárními čísly, tedy `0` a `1`. Herní plocha je následně generovaná vynásobením `board` a `mask` pro daný index. Hodnoty jsou následně sečteny a uloženy do sumy na řádku a sloupci.
 
@@ -23,3 +23,68 @@ Výsledky se ukládají jako `json` v s následující strukturou
    "level": 0
 }]
 ```
+
+## API
+
+V rámci hry se je možné zapsat do síně slávy a vyhrát na diecézku nějakou cenu. Z toho důvodu existuje jednoduchá API server. Dříve jsem využíval proxy, vytvořenou pomocí Cloudflare Functions a data ukládal do KV ve free tarifu. To ale v současném stavu není možné, resp. mohl bych velice brzy narazit na limity free tarifu. Proto jsem se rozhodl přemigrovat tuto funkcionalitu na Raspberry PI a rozeběhnout zde jednoduché REST API.
+
+Projekt by měl umožňovat tyto volání:
+
+- HTTP GET request pro získání všech data ve formě JSON
+  ```json
+  [
+   {
+      "name": "string",
+      "score": number,
+      "level": number
+   }, {
+      ...
+   }
+  ]
+  ```
+- HTTP POST request pro odeslání dat o dosaženém skóre ve formátu JSON
+  ```json
+  {
+   "name": "string",
+   "secret": "string",
+   "level": number,
+   "score": score
+  }
+  ```
+- HTTP POST request pro založení nového uživatele ve formátu JSON
+  ```json
+  {
+   "name": "string",
+   "secret": "string"
+  }
+  ```
+  s odpovědí, zdali je jméno volné, popř. v případě shody jmen, zdali se shodují tajná slova
+  - slova se shodují ale tajné slovo je jiné; odpověď: "Jméno je již obsazené, buďto zadej správné tajné slovo nebo si zvol jiné jméno"
+  - úspěšné zapsání; odpověď: "Tvé jméno bylo vytesané do síně slávy. Při každém úspěchu se nyní zapíšeš mezi hrdinné sumáře."
+  
+Data nejsou ukládána do žádné databáze, pouze do jednoduché JSON struktury:
+```json
+[
+   {
+      "name": "string",
+      "secret": "string",
+      "level": number,
+      "score": score
+   }, {
+      "name": "string",
+      "secret": "string",
+      "level": number,
+      "score": score
+   }, {
+      ...
+   }
+]
+```
+
+Server běží v Dockeru, aby ho bylo jednoduché spustit kdekoliv.
+
+Tunel mezi Raspbbery PI je tvořen pomocí Cloudflare Tunnels.
+
+
+## Front End
+
