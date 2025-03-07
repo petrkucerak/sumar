@@ -26,7 +26,7 @@ Výsledky se ukládají jako `json` v s následující strukturou
 
 ## API
 
-V rámci hry se je možné zapsat do síně slávy a vyhrát na diecézku nějakou cenu. Z toho důvodu existuje jednoduchá API server. Dříve jsem využíval proxy, vytvořenou pomocí Cloudflare Functions a data ukládal do KV ve free tarifu. To ale v současném stavu není možné, resp. mohl bych velice brzy narazit na limity free tarifu. Proto jsem se rozhodl přemigrovat tuto funkcionalitu na Raspberry PI a rozeběhnout zde jednoduché REST API.
+V rámci hry se je možné zapsat do síně slávy a vyhrát na diecézku nějakou cenu. Z toho důvodu existuje jednoduchý API server. Dříve jsem využíval proxy, vytvořenou pomocí Cloudflare Functions a data ukládal do KV ve free tarifu. To ale v současném stavu není možné, resp. mohl bych velice brzy narazit na limity free tarifu. Proto jsem se rozhodl přemigrovat tuto funkcionalitu na Raspberry PI a rozeběhnout zde jednoduché REST API v Pythonu.
 
 Projekt by měl umožňovat tyto volání:
 
@@ -61,6 +61,8 @@ Projekt by měl umožňovat tyto volání:
   s odpovědí, zdali je jméno volné, popř. v případě shody jmen, zdali se shodují tajná slova
   - slova se shodují ale tajné slovo je jiné; odpověď: "Jméno je již obsazené, buďto zadej správné tajné slovo nebo si zvol jiné jméno"
   - úspěšné zapsání; odpověď: "Tvé jméno bylo vytesané do síně slávy. Při každém úspěchu se nyní zapíšeš mezi hrdinné sumáře."
+
+Server používá CORS policy pro kontrolu, že data mohou proudit pouze z https://sumar.diecezko.cz
   
 Data nejsou ukládána do žádné databáze, pouze do jednoduché JSON struktury:
 ```json
