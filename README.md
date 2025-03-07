@@ -88,6 +88,10 @@ Server běží v Dockeru, aby ho bylo jednoduché spustit kdekoliv.
 Tunel mezi Raspbbery PI je tvořen pomocí Cloudflare Tunnels.
 
 ```sh
+# Create file for data
+echo "[]" > "api/data.json"
+
+
 # Build and run
 docker-compose up --build -d
 
