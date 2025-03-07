@@ -6,7 +6,8 @@ import os
 # Initialize Flask application
 app = Flask(__name__)
 # Allow cross-origin requests from specific domain
-CORS(app, resources={r"*": {"origins": ["http://localhost:5500", "http://127.0.0.1:5500"]}})
+CORS(app, resources={r"*": {"origins": ["https://sumar.diecezko.cz",
+     "https://22-implement-autosharing-sco.sumar-5fj.pages.dev/"]}})
 
 DATA_FILE = "data.json"  # Path to the JSON file storing user scores
 
