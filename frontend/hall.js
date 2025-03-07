@@ -1,5 +1,5 @@
 async function renderScoreboard() {
-  const url = "http://127.0.0.1:7612";
+  const url = "https://api-sumar.diecezko.cz";
   const response = await fetch(`${url}/scores`);
   const data = await response.json();
 
