@@ -1,30 +1,28 @@
 async function renderScoreboard() {
-  const url = "https://api.sumar.diecezko.cz/";
-  const response = await fetch(url);
+  const url = "http://127.0.0.1:7612";
+  const response = await fetch(`${url}/scores`);
   const data = await response.json();
 
   let string = "";
 
-  let score = data.keys.sort(
-    (a, b) => parseInt(b.metadata.score) - parseInt(a.metadata.score)
-  );
+  let sortedData = data.sort((a, b) => b.score - a.score);
 
-  for (let i = 0; i < score.length; i += 1) {
-    score[i].id = i + 1;
+  for (let i = 0; i < sortedData.length; i += 1) {
+    sortedData[i].id = i + 1;
   }
 
-  if (score.length > 1) score[0].class = "first";
-  if (score.length > 2) score[1].class = "top";
-  if (score.length > 3) score[2].class = "top";
+  if (sortedData.length >= 1) sortedData[0].class = "first";
+  if (sortedData.length >= 2) sortedData[1].class = "top";
+  if (sortedData.length >= 3) sortedData[2].class = "top";
 
-  // console.log(score);
-
-  score.map((e) => {
+  sortedData.map((e) => {
     string += `
      <tr class="${e.class !== undefined ? e.class : ""}" >
-       <td class="id">${e.id}.</td>
-       <td class="name">${e.name} ${e.id === 1 ? "👑" : ""}</td>
-       <td class="scoreHall">${e.metadata.score}&nbsp;b</td>
+       <td class="id">${e.id === 1 ? "👑" : `${e.id}.`}</td>
+       <td class="name">${e.name} <em class="scoreLevel">(${
+      e.level
+    } level)</em></td>
+       <td class="scoreHall">${e.score}&nbsp;b</td>
      </tr>`;
   });
 
