@@ -87,6 +87,14 @@ Server běží v Dockeru, aby ho bylo jednoduché spustit kdekoliv.
 
 Tunel mezi Raspbbery PI je tvořen pomocí Cloudflare Tunnels.
 
+```sh
+# Build and run
+docker-compose up --build -d
+
+# Build and run unless stopped
+docker-compose up --build -d && docker update --restart unless-stopped sumar_api
+```
+
 
 ## Front End
 
