@@ -1,6 +1,6 @@
 async function sendScore() {
-  const nickname = localStorage("playerName");
-  const secret = localStorage("playerSecret");
+  const nickname = localStorage.getItem("playerName");
+  const secret = localStorage.getItem("playerSecret");
   const score = parseInt(localStorage.getItem("gameScore"));
   const level = parseInt(localStorage.getItem("gameLevel"));
 
