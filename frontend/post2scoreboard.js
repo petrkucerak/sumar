@@ -1,32 +1,49 @@
 async function sendScore() {
-  const nickname = localStorage.getItem("playerName");
-  const secret = localStorage.getItem("playerSecret");
-  const score = parseInt(localStorage.getItem("gameScore"));
-  const level = parseInt(localStorage.getItem("gameLevel"));
+  try {
+    const nickname = localStorage.getItem("playerName");
+    const secret = localStorage.getItem("playerSecret");
+    const score = parseInt(localStorage.getItem("gameScore"));
+    const level = parseInt(localStorage.getItem("gameLevel"));
 
-  const data = {
-    name: nickname,
-    score: score,
-    secret: secret,
-    level: level,
-  };
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+    // Validate required data
+    if (!nickname || !secret) {
+      console.error("Missing player information");
+      return;
+    }
 
-  const raw = JSON.stringify(data);
+    const data = {
+      name: nickname,
+      score: score,
+      secret: secret,
+      level: level,
+    };
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
+    const raw = JSON.stringify(data);
 
-  const response = await fetch(
-    "https://api-sumar.diecezko.cz/submit",
-    requestOptions
-  );
-  console.log(response);
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    const response = await fetch(
+      "https://api-sumar.diecezko.cz/submit",
+      requestOptions
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Score submitted successfully:", result);
+    return result;
+  } catch (error) {
+    console.error("Error submitting score:", error);
+    // Optionally show an error message to the user
+  }
 }
 function closeGloryBox() {
   const gloryBox = document.getElementById("sign2hall");
