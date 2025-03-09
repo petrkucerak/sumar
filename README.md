@@ -48,7 +48,7 @@ Projekt by měl umožňovat tyto volání:
    "name": "string",
    "secret": "string",
    "level": number,
-   "score": score
+   "score": number
   }
   ```
 - HTTP POST request pro založení nového uživatele ve formátu JSON
@@ -71,12 +71,12 @@ Data nejsou ukládána do žádné databáze, pouze do jednoduché JSON struktur
       "name": "string",
       "secret": "string",
       "level": number,
-      "score": score
+      "score": number
    }, {
       "name": "string",
       "secret": "string",
       "level": number,
-      "score": score
+      "score": number
    }, {
       ...
    }
