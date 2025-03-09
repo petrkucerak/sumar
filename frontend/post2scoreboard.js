@@ -37,9 +37,6 @@ async function register() {
   const nickname = document.querySelector("#nickname").value;
   const secret = document.querySelector("#secret").value;
 
-  setPlayerSecret(secret);
-  setPlayerName(nickname);
-
   const data = {
     name: nickname,
     secret: secret,
@@ -66,4 +63,7 @@ async function register() {
   // console.log(message.message);
   const messageEl = document.querySelector("#status");
   messageEl.innerHTML = message.message.czech;
+
+  setPlayerSecret(secret);
+  setPlayerName(nickname);
 }

@@ -164,6 +164,8 @@ function renderCongratulation() {
     // if user is already register, hide register button and send score
     registrationButtonEl.classList.add("hidden");
     sendScore();
+    document.getElementById("fact").innerText =
+      facts[Math.floor(Math.random() * facts.length)];
   }
 
   const levelInfo = document.getElementById("level-info");
@@ -387,3 +389,42 @@ document.addEventListener("DOMContentLoaded", function () {
     renderLevel();
   });
 });
+
+const facts = [
+  `Víte, že královéhradecká diecéze byla založena v&nbsp;roce 1664?`,
+  `Víte, že patronem královéhradecké diecéze je sv.&nbsp;Kliment?`,
+  `Víte, že do královéhradecké diecéze patří 262 farností?`,
+  `Víte, že se královéhradecká diecéze rozkládá na&nbsp;území o&nbsp;rozloze 11&nbsp;650&nbsp;km², což ji řadí mezi středně velké diecéze v&nbsp;Česku?`,
+  `Víte, že Hradec Králové je historicky spojen s&nbsp;českými královnami, například Eliškou Rejčkou, která podporovala rozvoj města i&nbsp;církevních staveb?`,
+  `Víte, že současným sídelním biskupem je od roku 2011 Jan Vokál?`,
+  `Víte, že mezi nejvýznamnější biskupy patřil například Karel Otčenášek, který byl za komunismu vězněn a&nbsp;tajně vysvěcen na biskupa?`,
+  `Víte, že diecéze aktivně spolupracuje s&nbsp;jinými křesťanskými církvemi, například s&nbsp;Českobratrskou církví evangelickou a&nbsp;pravoslavnou církví?`,
+  `Víte, že se v&nbsp;katedrále Svatého Ducha nacházejí tři historické zvony?`,
+  `Víte, že každý zvon v&nbsp;katedrále má specifickou tóninu, která dohromady vytváří jedinečnou harmonii?`,
+  `Víte, že Jubilejní rok je zvláštní svatý rok vyhlášený papežem, který přináší mimořádné duchovní milosti?`,
+  `Víte, že řádné jubilejní roky se slaví každých 25 let, poslední byl v&nbsp;roce 2000, další připadá na letošní rok 2025?`,
+  `Víte, že papež může vyhlásit i&nbsp;mimořádný jubilejní rok, například Mimořádný svatý rok milosrdenství v&nbsp;roce 2016?`,
+  `Víte, že v&nbsp;jubilejním roce mohou věřící za splnění určitých podmínek (svatá zpověď, eucharistie, modlitba za papeže) získat plnomocné odpustky?`,
+  `Víte, že první jubilejní rok vyhlásil papež Bonifác VIII. v&nbsp;roce 1300?`,
+  `Víte, že Jubilejní rok má téma „Poutníci naděje“, jak oznámil papež František?`,
+  `Víte, že kromě Říma se jubilejní rok slaví také v&nbsp;místních diecézích, kde se otevírají Svaté brány ve vybraných katedrálách a&nbsp;poutních místech?`,
+  `Víte, že název města Hradec Králové pochází od českých královen, které zde měly své sídlo?`,
+  `Víte, že Hradec Králové je jedním z&nbsp;nejstarších českých měst? První písemná zmínka pochází z&nbsp;roku 1225.`,
+  `Víte, že Hradec Králové je známý jako "Salon republiky", protože zde vznikla významná a&nbsp;modernistická architektura podle plánů Josefa Gočára?`,
+  `Víte, že ve městě sídlí Univerzita Hradec Králové a&nbsp;Lékařská fakulta Univerzity Karlovy?`,
+  `Víte, že se královéhradecká diecéze skládá ze 14 vikariátů?`,
+  `Víte, že Hradec Králové leží na soutoku řek Labe a&nbsp;Orlice?`,
+  `Víte, že Bílá věž v&nbsp;centru města je nejvyšší renesanční zvonice v&nbsp;Česku s&nbsp;výškou 72 metrů?`,
+  `Víte, že Pardubice, i&nbsp;když leží v&nbsp;pardubickém kraji, patří pod správu královéhradecké diecéze, jejíž sídlo je v Hradci Králové?`,
+  `Víte, že Pardubice zatím nenavštívil žádný papež?`,
+  `Víte, že v&nbsp;Pardubicích působí emeritní biskup Mons. Josef Kajnek? `,
+  `Víte, že Litomyšl je jedno z&nbsp;nejstarších měst v&nbsp;Česku a&nbsp;první písemná zmínka pochází z&nbsp;roku 981?`,
+  `Víte, že Litomyšl patří pod Královéhradeckou diecézi, ačkoli historicky zde bylo i&nbsp;samostatné Litomyšlské biskupství, které existovalo v&nbsp;letech 1344–1474?`,
+  `Víte, že nový pomocný biskup se nejmenuje Prokop Mrož?`,
+  `Víte, že katolická církev v&nbsp;ČR je rozdělená do 8 diecézí? `,
+  `Víte, že v&nbsp;ČR existuje Sekce pro mládež při České biskupské konferenci (ČBK)?`,
+  `Víte, že Světový den mládeže slavíme každý rok na slavnost Ježíše Krista Krále? `,
+  `Víte, že každý vikariát má své vikariátní kaplany a&nbsp;zástupce pro mládež?`,
+  `Víte, že diecézním městem královéhradecké diecéze nejsou Pardubice?`,
+  `Víte, že Hradec Králové neleží na soutoku Vltavy a&nbsp;Ohře?`,
+];
