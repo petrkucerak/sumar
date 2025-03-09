@@ -4,9 +4,6 @@ let gameScore = 0;
 let levelCycles = 1;
 let running = 0;
 
-let playerSecret = "";
-let playerName = "";
-
 let levelsMap = [];
 let gameBoard = null;
 
@@ -97,12 +94,10 @@ function setGameLevel(value) {
 }
 
 function setPlayerName(value) {
-  playerName = value;
   localStorage.setItem("playerName", value);
 }
 
 function setPlayerSecret(value) {
-  playerSecret = value;
   localStorage.setItem("playerSecret", value);
 }
 
@@ -166,7 +161,9 @@ function renderCongratulation() {
     localStorage.getItem("playerName") !== null &&
     localStorage.getItem("playerSecret") !== null
   ) {
+    // if user is already register, hide register button and send score
     registrationButtonEl.classList.add("hidden");
+    sendScore();
   }
 
   const levelInfo = document.getElementById("level-info");

@@ -1,14 +1,14 @@
 async function sendScore() {
-  const nickname = document.querySelector("#nickname").value;
-  const secret = document.querySelector("#secret").value;
-  // const game = JSON.parse(localStorage.getItem("gameState"));
+  const nickname = localStorage("playerName");
+  const secret = localStorage("playerSecret");
   const score = parseInt(localStorage.getItem("gameScore"));
+  const level = parseInt(localStorage.getItem("gameLevel"));
 
-  // console.log(nickname, secret, score);
   const data = {
-    nickname: nickname,
+    name: nickname,
     score: score,
     secret: secret,
+    level: level,
   };
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -23,12 +23,10 @@ async function sendScore() {
   };
 
   const response = await fetch(
-    "https://api-sumar.diecezko.cz/",
+    "https://api-sumar.diecezko.cz/submit",
     requestOptions
   );
-  const message = await response.text();
-  const messageEl = document.querySelector("#status");
-  messageEl.innerHTML = message;
+  console.log(response);
 }
 function closeGloryBox() {
   const gloryBox = document.getElementById("sign2hall");
