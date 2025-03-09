@@ -4,6 +4,9 @@ let gameScore = 0;
 let levelCycles = 1;
 let running = 0;
 
+let playerSecret = "";
+let playerName = "";
+
 let levelsMap = [];
 let gameBoard = null;
 
@@ -92,6 +95,17 @@ function setGameLevel(value) {
   localStorage.setItem("gameLevel", value);
   document.getElementById("gameLevel").innerText = value;
 }
+
+function setPlayerName(value) {
+  playerName = value;
+  localStorage.setItem("playerName", value);
+}
+
+function setPlayerSecret(value) {
+  playerSecret = value;
+  localStorage.setItem("playerSecret", value);
+}
+
 function setLevelCycles(value) {
   levelCycles = parseInt(value);
   localStorage.setItem("levelCycles", value);
