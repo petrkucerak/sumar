@@ -95,6 +95,8 @@ async function register() {
     setPlayerSecret(secret);
     setPlayerName(nickname);
 
+    sendScore();
+
     return true;
   } catch (error) {
     console.error("Error during registration:", error);
