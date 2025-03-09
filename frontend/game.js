@@ -163,7 +163,14 @@ function renderCongratulation() {
   ) {
     // if user is already register, hide register button and send score
     registrationButtonEl.classList.add("hidden");
-    sendScore();
+    try {
+      sendScore().catch((error) => {
+        console.error("Error sending score:", error);
+        // Optionally show an error message to the user
+      });
+    } catch (error) {
+      console.error("Error initiating score submission:", error);
+    }
     document.getElementById("fact").innerHTML =
       facts[Math.floor(Math.random() * facts.length)];
   }
