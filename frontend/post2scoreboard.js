@@ -51,36 +51,55 @@ function closeGloryBox() {
 }
 
 async function register() {
-  const nickname = document.querySelector("#nickname").value;
-  const secret = document.querySelector("#secret").value;
+  try {
+    const nickname = document.querySelector("#nickname").value;
+    const secret = document.querySelector("#secret").value;
+    const messageEl = document.querySelector("#status");
 
-  const data = {
-    name: nickname,
-    secret: secret,
-  };
+    // Validate input
+    if (!nickname || !secret) {
+      messageEl.innerHTML = "Vyplň prosím všechna pole.";
+      return;
+    }
 
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+    const data = {
+      name: nickname,
+      secret: secret,
+    };
 
-  const raw = JSON.stringify(data);
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
+    const raw = JSON.stringify(data);
 
-  const response = await fetch(
-    "https://api-sumar.diecezko.cz/register",
-    requestOptions
-  );
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-  const message = JSON.parse(await response.text());
-  // console.log(message.message);
-  const messageEl = document.querySelector("#status");
-  messageEl.innerHTML = message.message.czech;
+    const response = await fetch(
+      "https://api-sumar.diecezko.cz/register",
+      requestOptions
+    );
 
-  setPlayerSecret(secret);
-  setPlayerName(nickname);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const message = JSON.parse(await response.text());
+    // console.log(message.message);
+    messageEl.innerHTML = message.message.czech;
+
+    setPlayerSecret(secret);
+    setPlayerName(nickname);
+
+    return true;
+  } catch (error) {
+    console.error("Error during registration:", error);
+    document.querySelector("#status").innerHTML =
+      "Došlo k chybě při registraci. Zkus to prosím později.";
+    return false;
+  }
 }
