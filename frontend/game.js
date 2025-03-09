@@ -157,9 +157,20 @@ function renderCongratulation() {
   // pause timer
   running = 0;
 
+  // render register button only if name is not posted
+  const registrationButtonEl = document.getElementById("sign-to-hall");
+  registrationButtonEl.classList.contains("hidden")
+    ? registrationButtonEl.classList.remove("hidden")
+    : null;
+  if (
+    localStorage.getItem("playerName") === null ||
+    localStorage.getItem("playerSecret") === null
+  ) {
+    registrationButtonEl.classList.add("hidden");
+  }
+
   const levelInfo = document.getElementById("level-info");
   levelInfo.innerText = `${gameLevel - 1}`;
-
 
   const congratulationEl = document.getElementById("congratulation");
   congratulationEl.classList.remove("hidden");
