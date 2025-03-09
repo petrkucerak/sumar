@@ -65,7 +65,7 @@ async function register() {
   );
 
   const message = JSON.parse(await response.text());
-  console.log(message);
+  console.log(message.message.message);
   const messageEl = document.querySelector("#status");
-  messageEl.innerHTML = message.message;
+  messageEl.innerHTML = message.message.message;
 }
