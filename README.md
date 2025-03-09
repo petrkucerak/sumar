@@ -1,6 +1,9 @@
 # Sumář 
 
-Jednoduchá počítací hra na diecézko 2025. Hra je inspirovaná horu sumate.
+Sumář je webová hra zaměřená na sčítání a kombinatoriku pro [Diecézko 2025](https://diecezko.cz/). Hráči musí správně označovat buňky herního pole tak, aby součet v řádcích a sloupcích odpovídal zadaným číslům.
+Hra je inspirovaná horu sumate.
+
+![screenshot hry](/frontend/ogg.png)
 
 ## Scripts
 
@@ -102,3 +105,32 @@ docker-compose up --build -d && docker update --restart unless-stopped sumar_api
 
 ## Front End
 
+> [!NOTE]
+> Popis níže je generovaný pomocí chatGPT
+
+### 🚀 Jak spustit hru  
+
+1. Otevřete soubor `sin-slavy.html` v prohlížeči.  
+2. Hra se automaticky načte a můžete začít hrát.  
+
+### 🎮 Herní princip  
+
+- Hráč označuje buňky tak, aby splnil podmínky součtů v řádcích a sloupcích.  
+- Po splnění všech podmínek je hráč odměněn a postupuje na další úroveň.  
+- Hra si ukládá pokrok pomocí `localStorage`, takže se můžete vrátit k rozehranému stavu.  
+
+## 🏆 Síň slávy  
+
+Hráči mohou své výsledky odeslat do síně slávy. Nejlepší hráči budou vyhlášeni během akce **Diecézko 2025 v Královéhradecké diecézi**. Síň slávy se načítá dynamicky z API (`https://api-sumar.diecezko.cz`).  
+
+## 📌 Ovládání  
+
+- Kliknutím na buňku měníte její stav (aktivní/neaktivní).  
+- Po dokončení úrovně hra automaticky přechází na další level.  
+- V pravém horním rohu lze resetovat hru nebo úroveň.  
+
+## 🎨 Design a inspirace  
+
+- Design je jednoduchý, přizpůsobený pro mobilní zařízení.  
+- Hra je inspirována konceptem **Sumplete**.  
+- Autor hry: [Petr Kučera](https://petrkucerak.cz/).  
