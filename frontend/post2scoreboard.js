@@ -66,5 +66,5 @@ async function register() {
 
   const message = await response.text();
   const messageEl = document.querySelector("#status");
-  messageEl.innerHTML = message;
+  messageEl.innerHTML = message.message;
 }
