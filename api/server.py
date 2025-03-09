@@ -3,26 +3,36 @@ from flask_cors import CORS
 import json
 import os
 import re
-import logging  
-from logging.handlers import RotatingFileHandler  
+import logging
+from logging.handlers import RotatingFileHandler
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
-# Initialize Flask application  
-app = Flask(__name__)  
+# Initialize Flask application
+app = Flask(__name__)
 
-# Configure logging  
-if not os.path.exists('logs'):  
-    os.mkdir('logs')  
-file_handler = RotatingFileHandler('logs/sumar_api.log', maxBytes=10240, backupCount=10)  
-file_handler.setFormatter(logging.Formatter(  
-    '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'  
-))  
-file_handler.setLevel(logging.INFO)  
-app.logger.addHandler(file_handler)  
-app.logger.setLevel(logging.INFO)  
-app.logger.info('Sumar API startup')  
+# Configure rate limiter: 1000 requests per hour per IP
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["1000 per hour"]
+)
 
-# Allow cross-origin requests from specific domain  
-CORS(app, resources={r"*": {"origins": ["https://sumar.diecezko.cz"]}})  
+# Configure logging
+if not os.path.exists('logs'):
+    os.mkdir('logs')
+file_handler = RotatingFileHandler(
+    'logs/sumar_api.log', maxBytes=10240, backupCount=10)
+file_handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+))
+file_handler.setLevel(logging.INFO)
+app.logger.addHandler(file_handler)
+app.logger.setLevel(logging.INFO)
+app.logger.info('Sumar API startup')
+
+# Allow cross-origin requests from specific domain
+CORS(app, resources={r"*": {"origins": ["https://sumar.diecezko.cz"]}})
 
 DATA_FILE = "data.json"  # Path to the JSON file storing user scores
 
@@ -47,6 +57,7 @@ def save_data(data):
 
 
 @app.route("/scores", methods=["GET"])
+@limiter.limit("100 per minute")  # Custom limit for this endpoint
 def get_scores():
     """Retrieve the leaderboard with names, scores, and levels."""
     data = load_data()
