@@ -59,11 +59,11 @@ def submit_score():
             if entry["secret"] != secret:
                 return jsonify({"error": {"english": "Invalid secret", "czech": "Neplatný tajný kód"}}), 403
 
-            if score > entry["score"]:
-                entry["score"] = score
-                entry["level"] = max(entry["level"], level)
-                save_data(data)
-                return jsonify({"message": {"english": "Score has been updated.", "czech": "Skóre bylo aktualizováno."}})
+            if int(score) > int(entry["score"]):  
+                entry["score"] = score  
+                entry["level"] = max(int(entry["level"]), int(level))  
+                save_data(data)  
+                return jsonify({"message": {"english": "Score has been updated.", "czech": "Skóre bylo aktualizováno."}})  
 
             return jsonify({"message": {"english": "Score was not beaten, remains unchanged.", "czech": "Skóre nebylo překonáno, zůstává nezměněno."}})
 
