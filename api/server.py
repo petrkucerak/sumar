@@ -130,18 +130,22 @@ def register_user():
 
     # Validate request fields
     if not name or not secret:
+        app.logger.warning("Registration attempt with missing fields")
         return jsonify({"error": {"english": "Missing fields", "czech": "Chybějící pole"}}), 400
 
     if not is_valid_name(name):
+        app.logger.warning(f"Invalid name format for registration: {name}")
         return jsonify({"error": {"english": "Invalid name format", "czech": "Neplatný formát jména"}}), 400
 
     for entry in data:
         if entry["name"] == name:
             if entry["secret"] == secret:
+                app.logger.info(f"User {name} re-registering with valid credentials")
                 return jsonify({"message": {
                     "english": "Welcome back. Your name and secret match an existing record. If you beat your current score, it will be updated in the hall of fame.",
                     "czech": "Vítejte zpět. Vaše jméno a tajný kód odpovídají existujícímu záznamu. Pokud překonáte své současné skóre, bude aktualizováno v síni slávy."
                 }})
+            app.logger.warning(f"User {name} tried to register with incorrect secret")
             return jsonify({"error": {
                 "english": "Name is already taken. Either enter the correct secret or choose a different name.",
                 "czech": "Jméno je již obsazeno. Zadejte správný tajný kód nebo zvolte jiné jméno."
@@ -150,6 +154,7 @@ def register_user():
     # Register a new user with an initial score of 0
     data.append({"name": name, "secret": secret, "level": 0, "score": 0})
     save_data(data)
+    app.logger.info(f"New user registered: {name}")
     return jsonify({"message": {
         "english": "Your name has been added to the hall of fame. Your achievements will now be recorded.",
         "czech": "Vaše jméno bylo přidáno do síně slávy. Vaše úspěchy budou nyní zaznamenávány."
