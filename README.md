@@ -1,7 +1,9 @@
 # Sumář 
 
 Sumář je webová hra zaměřená na sčítání a kombinatoriku pro [Diecézko 2025](https://diecezko.cz/). Hráči musí správně označovat buňky herního pole tak, aby součet v řádcích a sloupcích odpovídal zadaným číslům.
-Hra je inspirovaná horu sumate. 
+Hra je inspirovaná horu sumate.
+
+![screenshot hry](/frontend/ogg.png)
 
 ## Scripts
 
