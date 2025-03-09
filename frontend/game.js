@@ -164,7 +164,7 @@ function renderCongratulation() {
     // if user is already register, hide register button and send score
     registrationButtonEl.classList.add("hidden");
     sendScore();
-    document.getElementById("fact").innerText =
+    document.getElementById("fact").innerHTML =
       facts[Math.floor(Math.random() * facts.length)];
   }
 
