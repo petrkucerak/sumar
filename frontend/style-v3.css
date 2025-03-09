@@ -393,7 +393,6 @@ a {
 .sign2hall .status {
   text-align: center;
   width: 100%;
-  font-size: 0.7rem;
 }
 
 .sign2hall h2 {
@@ -427,8 +426,8 @@ a {
   .sign2hall .button {
     font-size: 0.8rem;
   }
-  .sign2hall .status {
-    font-size: 0.6rem;
+  .sign2hall #status {
+    font-size: 0.7rem;
   }
 }
 /* end of sign2hall section */
