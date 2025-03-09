@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: sumar_api
+    restart: always
+    ports:
+      - "7612:5000"
+    volumes:
+      - ./data.json:/app/data.json

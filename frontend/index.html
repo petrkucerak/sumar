@@ -42,8 +42,7 @@
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="fonts/roboto.css" />
-    <link rel="stylesheet" href="style-v3.css" />
-
+    <link rel="stylesheet" href="style-v4.css" />
   </head>
 
   <body>
@@ -59,20 +58,20 @@
       </div>
       <div class="game" id="game">
         <div class="congratulation hidden" id="congratulation">
-          <p>Dokončil jsi level <span id="level-info"></span>!</p>
+          <p class="title">Dokončil jsi level <span id="level-info"></span>!</p>
+          <p class="fact" id="fact"></p>
           <div class="button" id="next-level">další level</div>
-          <div class="button" id="sign-to-hall">zapsat se do síně slávy</div>
+          <div class="button" id="sign-to-hall">registrovat se v síni slávy</div>
         </div>
         <div class="sign2hall hidden" id="sign2hall">
-          <h2>Zapsat se do síně slávy</h2>
+          <h2>Vytvořit účet v síni slávy</h2>
           <p>
-            <strong>Přezdívka</strong> - spolu s ní bude do Síně slávy vytesáno
-            maximální skóre.
+            <strong>Přezdívka</strong> - spolu s&nbsp;ní bude do Síně slávy
+            vytesáno maximální skóre.
           </p>
           <p>
-            <strong>Tajné slovo</strong> - pokud tvoříš svoji přezdívku poprvé,
-            dobře si ho zapamatuj. Pro aktualizaci budeš muset vepsat stejné
-            slovo.
+            <strong>Tajné slovo</strong> - dobře si ho zapamatuj, slouží jako
+            heslo.
           </p>
           <input
             id="nickname"
@@ -81,6 +80,30 @@
             placeholder="Tvoje přezdívka"
             type="text"
           />
+          <span
+            id="nickname-feedback"
+            style="color: red; display: none; font-size: 0.8rem; margin: 0.0rem 0.5rem;"
+          >
+            3-20 znaků, A-Z, 0-9
+          </span>
+
+          <script>
+            document
+              .getElementById("nickname")
+              .addEventListener("input", function () {
+                const nickname = this.value;
+                const regex = /^[a-zA-Z0-9_-]{3,20}$/;
+                const feedback = document.getElementById("nickname-feedback");
+
+                if (regex.test(nickname)) {
+                  feedback.style.display = "none";
+                  this.style.borderColor = "green";
+                } else {
+                  feedback.style.display = "block";
+                  this.style.borderColor = "red";
+                }
+              });
+          </script>
           <input
             id="secret"
             name="secret"
@@ -90,7 +113,7 @@
           />
           <p id="status"></p>
           <div class="buttons">
-            <div class="submit button" onclick="sendScore()">Odeslat</div>
+            <div class="submit button" onclick="register()">Registrovat</div>
             <div onclick="closeGloryBox()" class="submit button">Zavřít</div>
           </div>
         </div>
@@ -131,8 +154,8 @@
       <p class="reset">
         <span id="reset">Reset celé hry</span> - vynuluje veškeré dosažené
         skóre, stav nelze vrátit zpátky.
-        <span id="levelReset">Aktualizace levelů</span> - vynuluje aktuální kolo a
-        pokud existuje novější verze levelů, stáhne je.
+        <span id="levelReset">Aktualizace levelů</span> - vynuluje aktuální kolo
+        a pokud existuje novější verze levelů, stáhne je.
       </p>
       <p>
         Vytvořil

@@ -35,6 +35,10 @@ h1 {
   margin-bottom: 0;
 }
 
+.not-underline {
+  text-decoration: none;
+}
+
 .title p {
   margin: 0;
   margin-bottom: 2rem;
@@ -83,7 +87,8 @@ a {
 .reset {
   font-size: 0.75rem;
 }
-.reset #reset {
+.reset #reset,
+#levelReset {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -315,9 +320,20 @@ a {
   color: #f5efe7;
   font-size: 1.6rem;
   font-weight: 600;
-  text-transform: uppercase;
   z-index: 100;
 }
+
+.congratulation .title {
+  text-transform: uppercase;
+}
+
+.congratulation .fact {
+  margin: 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
 .congratulation .button {
   color: #3e5879;
   margin: 0.3rem;
@@ -326,6 +342,7 @@ a {
   padding: 14px 20px;
   background-color: #f5efe7;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 480px) {
@@ -425,6 +442,9 @@ a {
   .sign2hall .button {
     font-size: 0.8rem;
   }
+  .sign2hall #status {
+    font-size: 0.7rem;
+  }
 }
 /* end of sign2hall section */
 
@@ -464,5 +484,9 @@ a {
 .top {
   font-weight: 500;
   font-size: 1.2rem;
+}
+
+.scoreLevel {
+  font-size: 0.8rem;
 }
 /* end the hall of throne style */
