@@ -64,7 +64,7 @@ async function register() {
     requestOptions
   );
 
-  const message = await response.text();
+  const message = JSON.parse(await response.text());
   console.log(message);
   const messageEl = document.querySelector("#status");
   messageEl.innerHTML = message.message;
