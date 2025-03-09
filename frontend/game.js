@@ -163,8 +163,8 @@ function renderCongratulation() {
     ? registrationButtonEl.classList.remove("hidden")
     : null;
   if (
-    localStorage.getItem("playerName") === null ||
-    localStorage.getItem("playerSecret") === null
+    localStorage.getItem("playerName") !== null &&
+    localStorage.getItem("playerSecret") !== null
   ) {
     registrationButtonEl.classList.add("hidden");
   }
