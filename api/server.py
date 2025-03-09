@@ -32,7 +32,7 @@ app.logger.setLevel(logging.INFO)
 app.logger.info('Sumar API startup')
 
 # Allow cross-origin requests from specific domain
-CORS(app, resources={r"*": {"origins": ["https://sumar.diecezko.cz"]}})
+CORS(app, resources={r"*": {"origins": ["https://sumar.diecezko.cz", "https://22-implement-autosharing-sco.sumar-5fj.pages.dev"]}})
 
 DATA_FILE = "data.json"  # Path to the JSON file storing user scores
 
