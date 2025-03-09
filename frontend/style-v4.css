@@ -35,6 +35,10 @@ h1 {
   margin-bottom: 0;
 }
 
+.not-underline {
+  text-decoration: none;
+}
+
 .title p {
   margin: 0;
   margin-bottom: 2rem;
