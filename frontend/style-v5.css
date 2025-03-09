@@ -83,6 +83,15 @@ a {
   margin: 1rem 0;
 }
 
+.tutorial-image {
+  width: 100%;
+}
+
+.animate-link {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
 /* start control configuration */
 .reset {
   font-size: 0.75rem;

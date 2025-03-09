@@ -3,11 +3,13 @@ const urlsToCache = [
   // HTML, CSS, JS files
   "index.html",
   "/favicon/favicon.ico",
-  "/style-v3.css",
+  "/style-v5.css",
   "/post2scoreboard.js",
   "/hall.js",
   "/game.js",
   "/sin-slavy.html",
+  // Images
+  "/images/tutorial.gif",
   // Game data files
   "/data/5x5_1-5_levels.json",
   "/data/5x5_1-7_levels.json",
