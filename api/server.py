@@ -42,10 +42,24 @@ def get_scores():
 @app.route("/submit", methods=["POST"])
 def submit_score():
     """Submit a new score for an existing user. Updates only if the new score is higher."""
+    if not request.is_json:
+        return jsonify({"error": {"english": "Request must be JSON", "czech": "Požadavek musí být ve formátu JSON"}}), 400
+
     data = load_data()
     new_entry = request.json
     name, secret, level, score = new_entry.get("name"), new_entry.get(
         "secret"), new_entry.get("level"), new_entry.get("score")
+
+    # Validate score and level are integers
+    try:
+        level = int(level)
+        score = int(score)
+    except (ValueError, TypeError):
+        return jsonify({"error": {"english": "Level and score must be integers", "czech": "Úroveň a skóre musí být celá čísla"}}), 400
+
+    # Validate score and level are positive
+    if score < 0 or level < 0:
+        return jsonify({"error": {"english": "Level and score must be positive", "czech": "Úroveň a skóre musí být kladná"}}), 400
 
     # Validate request fields
     if not name or not secret or level is None or score is None:
@@ -59,11 +73,11 @@ def submit_score():
             if entry["secret"] != secret:
                 return jsonify({"error": {"english": "Invalid secret", "czech": "Neplatný tajný kód"}}), 403
 
-            if int(score) > int(entry["score"]):  
-                entry["score"] = score  
-                entry["level"] = max(int(entry["level"]), int(level))  
-                save_data(data)  
-                return jsonify({"message": {"english": "Score has been updated.", "czech": "Skóre bylo aktualizováno."}})  
+            if int(score) > int(entry["score"]):
+                entry["score"] = score
+                entry["level"] = max(int(entry["level"]), int(level))
+                save_data(data)
+                return jsonify({"message": {"english": "Score has been updated.", "czech": "Skóre bylo aktualizováno."}})
 
             return jsonify({"message": {"english": "Score was not beaten, remains unchanged.", "czech": "Skóre nebylo překonáno, zůstává nezměněno."}})
 
