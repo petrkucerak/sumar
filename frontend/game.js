@@ -263,6 +263,8 @@ async function initGame() {
   // Wait for all level data to load
   await Promise.all(levelPromises);
 
+  levelsMap = levelsMap.sort((a, b) => a.level - b.level);
+
   // INIT GAME BOARD
   if (localStorage.getItem("gameBoard") !== null)
     gameBoard = JSON.parse(localStorage.getItem("gameBoard"));
