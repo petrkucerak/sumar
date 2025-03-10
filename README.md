@@ -100,6 +100,9 @@ docker-compose up --build -d
 
 # Build and run unless stopped
 docker-compose up --build -d && docker update --restart unless-stopped sumar_api
+
+# Run shell in running docker container
+docker exec -it <container_id_or_name> /bin/sh
 ```
 
 
