@@ -3,8 +3,8 @@ name: 🫡 Update Game and Style Versions
 on:
   pull_request:
     paths:
-      - 'game-v*.js'
-      - 'style-v*.css'
+      - '**/game-v*.js'
+      - '**/style-v*.css'
 
 jobs:
   update-version:
