@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sumar.diecezko.cz/sitemap.txt
