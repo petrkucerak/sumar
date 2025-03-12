@@ -8,7 +8,7 @@ let levelsMap = [];
 let gameBoard = null;
 
 const CellStatus = {
-  UNKNOWN: -2193,
+  UNKNOWN: -2187,
   USE: 1,
   NOT: 0,
 };
