@@ -108,9 +108,9 @@ function setLevelCycles(value) {
 function setLevelTime(value) {
   levelTime = parseInt(value);
   localStorage.setItem("levelTime", value);
-  const hour = Math.round(value / 60);
-  const min = value % 60;
-  document.getElementById("levelTime").innerText = `${hour}:${pad(min, 2)}`;
+  const min = Math.floor(value / 60);
+  const sec = value % 60;
+  document.getElementById("levelTime").innerText = `${min}:${String(sec).padStart(2, "0")}`;
 }
 function setGameScore(value) {
   gameScore = parseInt(value);
@@ -201,8 +201,8 @@ function createGameBoardByLevel(level) {
 
 function startLevelTime() {
   setInterval(() => {
-    if (running) setLevelTime(parseInt(levelTime) + 1);
-  }, 1000); // 1000 ms = 1 s
+    if (typeof running !== "undefined" && running) setLevelTime(parseInt(levelTime) + 1);
+  }, 100); // 1000 ms = 1 s
 }
 
 async function getLevelMap(path) {
@@ -225,7 +225,7 @@ async function initGame() {
   // INIT GAME VARIABLES
   setGameLevel(localStorage.getItem("gameLevel") || 1);
   setLevelCycles(localStorage.getItem("levelCycles") || 1);
-  setLevelTime(localStorage.getItem("levelTime") || 0);
+  setLevelTime( 0);
   setGameScore(localStorage.getItem("gameScore") || 0);
 
   startLevelTime();
