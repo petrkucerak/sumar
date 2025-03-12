@@ -1,0 +1,13 @@
+/* TEAM */     
+Your title: Petr Kucera, DCM HK and contributors
+Site: https://petrkucerak.cz, https://www.bihk.cz/biskupstvi/diecezni-centrum-pro-mladez, https://github.com/petrkucerak/sumar
+Location: Prague, Czech Republic
+							
+/* THANKS */
+Name: Pepik, David, Jindra, Tomas, E team and all contributors for debugging
+                            
+/* SITE */
+Last update: by repository https://github.com/petrkucerak/sumar
+Technology and services: HTML, CSS, Javascript, Docker, Python, Cloudflare, Github Actions, ...
+
+                            
