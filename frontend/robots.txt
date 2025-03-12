@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://sumar.diecezko.cz
+
+# Sitemaps
 Sitemap: https://sumar.diecezko.cz/sitemap.txt
