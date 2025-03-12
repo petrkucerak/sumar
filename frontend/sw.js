@@ -6,7 +6,7 @@ const urlsToCache = [
   "/style-v5.css",
   "/post2scoreboard.js",
   "/hall.js",
-  "/game.js",
+  "/game-v1.js",
   "/sin-slavy.html",
   // Images
   "/images/tutorial.gif",
