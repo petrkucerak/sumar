@@ -13,6 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check if version was already updated
+        id: check_artifact
+        run: |
+          if gh api repos/${{ github.repository }}/actions/artifacts | grep -q "version-updated"; then
+            echo "Version update already performed. Skipping..."
+            exit 0
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Determine new version number
         id: versioning
         run: |
@@ -54,3 +64,10 @@ jobs:
           git add .
           git commit -m "Auto-increment game and style version" || exit 0
           git push origin HEAD:${{ github.head_ref }}
+
+      - name: Upload artifact to prevent duplicate updates
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-updated
+          path: .
