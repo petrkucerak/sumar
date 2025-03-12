@@ -202,7 +202,7 @@ function createGameBoardByLevel(level) {
 function startLevelTime() {
   setInterval(() => {
     if (typeof running !== "undefined" && running) setLevelTime(parseInt(levelTime) + 1);
-  }, 100); // 1000 ms = 1 s
+  }, 1000); // 1000 ms = 1 s
 }
 
 async function getLevelMap(path) {
@@ -225,7 +225,7 @@ async function initGame() {
   // INIT GAME VARIABLES
   setGameLevel(localStorage.getItem("gameLevel") || 1);
   setLevelCycles(localStorage.getItem("levelCycles") || 1);
-  setLevelTime( 0);
+  setLevelTime( localStorage.getItem("levelTime")||0);
   setGameScore(localStorage.getItem("gameScore") || 0);
 
   startLevelTime();
