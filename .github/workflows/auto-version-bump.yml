@@ -1,0 +1,73 @@
+name: 🫡 Update Game and Style Versions
+
+on:
+  pull_request:
+    paths:
+      - 'game-v*.js'
+      - 'style-v*.css'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check if version was already updated
+        id: check_artifact
+        run: |
+          if gh api repos/${{ github.repository }}/actions/artifacts | grep -q "version-updated"; then
+            echo "Version update already performed. Skipping..."
+            exit 0
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine new version number
+        id: versioning
+        run: |
+          GAME_FILE=$(ls game-v*.js 2>/dev/null | head -n 1 || echo "")
+          STYLE_FILE=$(ls style-v*.css 2>/dev/null | head -n 1 || echo "")
+
+          if [[ -n "$GAME_FILE" ]]; then
+            GAME_VERSION=$(echo "$GAME_FILE" | grep -oP 'game-v\K\d+')
+            NEW_GAME_VERSION=$((GAME_VERSION + 1))
+            NEW_GAME_FILE="game-v${NEW_GAME_VERSION}.js"
+            echo "NEW_GAME_FILE=$NEW_GAME_FILE" >> $GITHUB_ENV
+            echo "OLD_GAME_FILE=$GAME_FILE" >> $GITHUB_ENV
+          fi
+
+          if [[ -n "$STYLE_FILE" ]]; then
+            STYLE_VERSION=$(echo "$STYLE_FILE" | grep -oP 'style-v\K\d+')
+            NEW_STYLE_VERSION=$((STYLE_VERSION + 1))
+            NEW_STYLE_FILE="style-v${NEW_STYLE_VERSION}.css"
+            echo "NEW_STYLE_FILE=$NEW_STYLE_FILE" >> $GITHUB_ENV
+            echo "OLD_STYLE_FILE=$STYLE_FILE" >> $GITHUB_ENV
+          fi
+
+      - name: Rename files
+        run: |
+          if [[ -n "$OLD_GAME_FILE" && -n "$NEW_GAME_FILE" ]]; then
+            mv "$OLD_GAME_FILE" "$NEW_GAME_FILE"
+            find . -type f -exec sed -i "s/$OLD_GAME_FILE/$NEW_GAME_FILE/g" {} +
+          fi
+
+          if [[ -n "$OLD_STYLE_FILE" && -n "$NEW_STYLE_FILE" ]]; then
+            mv "$OLD_STYLE_FILE" "$NEW_STYLE_FILE"
+            find . -type f -exec sed -i "s/$OLD_STYLE_FILE/$NEW_STYLE_FILE/g" {} +
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Auto-increment game and style version" || exit 0
+          git push
+
+      - name: Upload artifact to prevent duplicate updates
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-updated
+          path: .
