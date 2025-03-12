@@ -38,7 +38,8 @@ function computeSum(row, col) {
   const colSumTarget = level.col[col];
   let colSum = 0;
   for (let i = 0; i < level.size[0]; i += 1) {
-    colSum += gameBoard.mask[i][col] * level.board[i][col];
+    if (gameBoard.mask[i][col] == CellStatus.UNKNOWN) colSum += -1000;
+    else colSum += gameBoard.mask[i][col] * level.board[i][col];
   }
 
   const hElC = document.getElementById(`game-header-cell-col-${col}`);
@@ -50,7 +51,8 @@ function computeSum(row, col) {
   const rowSumTarget = level.row[row];
   let rowSum = 0;
   for (let i = 0; i < level.size[1]; i += 1) {
-    rowSum += gameBoard.mask[row][i] * level.board[row][i];
+    if (gameBoard.mask[row][i] == CellStatus.UNKNOWN) rowSum += -1000;
+    else rowSum += gameBoard.mask[row][i] * level.board[row][i];
   }
   const hElR = document.getElementById(`game-header-cell-row-${row}`);
   rowSum === rowSumTarget
@@ -110,7 +112,9 @@ function setLevelTime(value) {
   localStorage.setItem("levelTime", value);
   const min = Math.floor(value / 60);
   const sec = value % 60;
-  document.getElementById("levelTime").innerText = `${min}:${String(sec).padStart(2, "0")}`;
+  document.getElementById("levelTime").innerText = `${min}:${String(
+    sec
+  ).padStart(2, "0")}`;
 }
 function setGameScore(value) {
   gameScore = parseInt(value);
@@ -201,7 +205,8 @@ function createGameBoardByLevel(level) {
 
 function startLevelTime() {
   setInterval(() => {
-    if (typeof running !== "undefined" && running) setLevelTime(parseInt(levelTime) + 1);
+    if (typeof running !== "undefined" && running)
+      setLevelTime(parseInt(levelTime) + 1);
   }, 1000); // 1000 ms = 1 s
 }
 
@@ -225,7 +230,7 @@ async function initGame() {
   // INIT GAME VARIABLES
   setGameLevel(localStorage.getItem("gameLevel") || 1);
   setLevelCycles(localStorage.getItem("levelCycles") || 1);
-  setLevelTime( localStorage.getItem("levelTime")||0);
+  setLevelTime(localStorage.getItem("levelTime") || 0);
   setGameScore(localStorage.getItem("gameScore") || 0);
 
   startLevelTime();
