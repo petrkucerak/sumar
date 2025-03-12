@@ -63,7 +63,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add .
           git commit -m "Auto-increment game and style version" || exit 0
-          git push origin HEAD:${{ github.head_ref }}
+          git push
 
       - name: Upload artifact to prevent duplicate updates
         if: success()
