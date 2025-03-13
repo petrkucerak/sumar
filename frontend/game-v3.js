@@ -200,6 +200,9 @@ function renderCongratulation() {
 
   // Render confects
   burstExplosion();
+
+  // Vibrate for 200ms
+  navigator.vibrate(200);
 }
 
 function createGameBoardByLevel(level) {
