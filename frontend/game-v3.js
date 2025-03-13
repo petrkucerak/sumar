@@ -132,6 +132,15 @@ function setCellStatus(row, col, status) {
   localStorage.setItem("gameBoard", JSON.stringify(gameBoard));
 }
 
+function burstExplosion() {
+  confetti({
+    particleCount: 200,
+    spread: 70,
+    startVelocity: 60,
+    origin: { y: 1.0 },
+  });
+}
+
 function setNewLevel() {
   // compute score
   const levelScore = Math.floor(
@@ -188,6 +197,9 @@ function renderCongratulation() {
   const width = document.getElementById("game").offsetWidth;
   const height = document.getElementById("game").offsetHeight;
   congratulationEl.setAttribute("style", `height:${height}px;width:${width}px`);
+
+  // Render confects
+  burstExplosion();
 }
 
 function createGameBoardByLevel(level) {
