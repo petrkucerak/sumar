@@ -184,8 +184,7 @@ function renderCongratulation() {
     } catch (error) {
       console.error("Error initiating score submission:", error);
     }
-    document.getElementById("fact").innerHTML =
-      facts[Math.floor(Math.random() * facts.length)];
+    document.getElementById("fact").innerHTML = facts[gameLevel % facts.length];
   }
 
   const levelInfo = document.getElementById("level-info");
