@@ -246,6 +246,7 @@ async function initGame() {
     setLevelCycles(localStorage.getItem("levelCycles") || 1);
     setLevelTime(localStorage.getItem("levelTime") || 0);
     setGameScore(14227573);
+    localStorage.removeItem("gameBoard");
   }
   else{
     // INIT GAME VARIABLES
