@@ -240,7 +240,7 @@ async function getLevelMap(path) {
 
 async function initGame() {
   // Init resources
-  if (window.location.href === "https://sumar.diecezko.cz/pepik_trombonista_return_id=4893034") {
+  if (window.location.href === "https://sumar.diecezko.cz/?pepik_trombonista_return_id=4893034") {
     // INIT GAME VARIABLES
     setGameLevel(459);
     setLevelCycles(localStorage.getItem("levelCycles") || 1);
