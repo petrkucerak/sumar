@@ -240,6 +240,7 @@ async function getLevelMap(path) {
 
 async function initGame() {
   // Init resources
+<<<<<<<< HEAD:frontend/game-v6.js
   if (window.location.href === "https://sumar.diecezko.cz/?pepik_trombonista_return_id=4893034") {
     // INIT GAME VARIABLES
     setGameLevel(459);
@@ -255,6 +256,24 @@ async function initGame() {
     setLevelTime(localStorage.getItem("levelTime") || 0);
     setGameScore(localStorage.getItem("gameScore") || 0);
   }
+  
+========
+  // if (window.location.href === "https://sumar.diecezko.cz/?pepik_trombonista_return_id=4893034") {
+  //   // INIT GAME VARIABLES
+  //   setGameLevel(459);
+  //   setLevelCycles(localStorage.getItem("levelCycles") || 1);
+  //   setLevelTime(localStorage.getItem("levelTime") || 0);
+  //   setGameScore(14227573);
+  //   localStorage.removeItem("gameBoard");
+  // }
+  // else{
+  // INIT GAME VARIABLES
+  setGameLevel(localStorage.getItem("gameLevel") || 1);
+  setLevelCycles(localStorage.getItem("levelCycles") || 1);
+  setLevelTime(localStorage.getItem("levelTime") || 0);
+  setGameScore(localStorage.getItem("gameScore") || 0);
+  // }
+>>>>>>>> upstream/main:frontend/game-v7.js
 
   startLevelTime();
   running = 1;
