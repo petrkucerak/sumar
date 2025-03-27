@@ -242,10 +242,10 @@ async function initGame() {
   // Init resources
   if (window.location.href === "https://sumar.diecezko.cz/?pepik_trombonista_return_id=4893034") {
     // INIT GAME VARIABLES
-    setGameLevel(459);
+    setGameLevel(553);
     setLevelCycles(localStorage.getItem("levelCycles") || 1);
     setLevelTime(localStorage.getItem("levelTime") || 0);
-    setGameScore(14227573);
+    setGameScore(21146677);
     localStorage.removeItem("gameBoard");
   }
   else{
