@@ -239,6 +239,28 @@ async function getLevelMap(path) {
 }
 
 async function initGame() {
+
+  // Add reset action
+  const resetEl = document.getElementById("reset");
+  resetEl.addEventListener("click", () => {
+    localStorage.clear();
+    setLevelTime(0);
+    location.reload();
+  });
+
+  // Add level reset action
+  const levelResetEl = document.getElementById("levelReset");
+  levelResetEl.addEventListener("click", () => {
+    // actual level game board
+    localStorage.removeItem("gameBoard");
+    // downloaded levels
+    for (const size of levelSizes) {
+      localStorage.removeItem(`${size}_levels`);
+    }
+    setLevelTime(0);
+    location.reload();
+  });
+  
   // Init resources
   // if (window.location.href === "https://sumar.diecezko.cz/?pepik_trombonista_return_id=4893034") {
   //   // INIT GAME VARIABLES
@@ -297,27 +319,6 @@ async function initGame() {
   if (localStorage.getItem("gameBoard") !== null)
     gameBoard = JSON.parse(localStorage.getItem("gameBoard"));
   else setGameBoard(createGameBoardByLevel(levelsMap[gameLevel]));
-
-  // Add reset action
-  const resetEl = document.getElementById("reset");
-  resetEl.addEventListener("click", () => {
-    localStorage.clear();
-    setLevelTime(0);
-    location.reload();
-  });
-
-  // Add level reset action
-  const levelResetEl = document.getElementById("levelReset");
-  levelResetEl.addEventListener("click", () => {
-    // actual level game board
-    localStorage.removeItem("gameBoard");
-    // downloaded levels
-    for (const size of levelSizes) {
-      localStorage.removeItem(`${size}_levels`);
-    }
-    setLevelTime(0);
-    location.reload();
-  });
 
   // Add configuration hooks
   const nextLevelEl = document.getElementById("next-level");
