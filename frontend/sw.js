@@ -8,7 +8,7 @@ const urlsToCache = [
   "/hall.js",
   "/game-v10.js",
   "/confetti.min.js",
-  "/banner.js",
+  "/banner-v1.js",
   "/sin-slavy.html",
   // Images
   "/images/tutorial.gif",
