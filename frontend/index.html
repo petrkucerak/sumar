@@ -51,10 +51,21 @@
     />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="fonts/roboto.css" />
-    <link rel="stylesheet" href="style-v5.css" />
+    <link rel="stylesheet" href="style-v6.css" />
   </head>
 
   <body>
+    <div id="banner" class="banner hidden">
+      <img src="images/x.svg" id="banner__x" class="banner__x" />
+      <div id="banner__content" class="banner__content">
+        <p>
+          <strong>Diecézko se koná už tuto sobotu!</strong> Pravidla slosování
+          najdeš v&nbsp;popisu hry. Losování a&nbsp;ocenění proběhne na základě
+          výsledků zaznamenaných do 12:30, ale do síně slávy se nesoutěžně můžeš
+          zapisovat i&nbsp;po uzavření slosování.
+        </p>
+      </div>
+    </div>
     <header class="title">
       <h1>Sumář</h1>
       <p>Jednoduchá sčítací hra</p>
@@ -191,6 +202,7 @@
       <script src="confetti.min.js"></script>
       <script src="game-v10.js"></script>
       <script src="post2scoreboard.js"></script>
+      <script src="banner-v1.js"></script>
     </footer>
   </body>
 </html>
