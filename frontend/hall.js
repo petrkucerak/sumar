@@ -5,7 +5,11 @@ async function renderScoreboard() {
 
   let string = "";
 
-  let sortedData = data.sort((a, b) => b.score - a.score);
+  // Filter out the unwanted name
+  let filteredData = data.filter((e) => e.name !== "BombardiroCrocodilo");
+
+  // Sort by score descending
+  let sortedData = filteredData.sort((a, b) => b.score - a.score);
 
   for (let i = 0; i < sortedData.length; i += 1) {
     sortedData[i].id = i + 1;
